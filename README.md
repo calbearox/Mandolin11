@@ -1,4 +1,4 @@
-# action.js
+# https://calbearox.github.io/potential-money/
 
 > GitHub API client for GitHub Actions
 
