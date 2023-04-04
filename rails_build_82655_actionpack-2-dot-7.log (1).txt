@@ -1,1415 +1,0 @@
-~~~ Running global environment hook
-[90m$[0m etc/buildkite-agent/hooks/environment
-~~~ :llama: Setting up elastic stack environment (v4.3.3)
-export DOCKER_VERSION=18.09.2
-export BUILDKITE_STACK_NAME=buildkite
-export BUILDKITE_STACK_VERSION=v4.3.3
-export BUILDKITE_AGENTS_PER_INSTANCE=1
-export BUILDKITE_SECRETS_BUCKET=buildkite-managedsecretsbucket-1rrdrhvvhfy4e
-export AWS_DEFAULT_REGION=us-east-1
-export AWS_REGION=us-east-1
-export PLUGINS_ENABLED="secrets ecr docker-login"
-export BUILDKITE_ECR_POLICY=poweruser
-Checking docker
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
-Checking disk space
-Disk space free:  49G
-Inodes free:  25M
-Configuring built-in plugins
-Secrets plugin enabled
-ECR plugin enabled
-Docker-login plugin enabled
-~~~ Downloading secrets from :s3: buildkite-managedsecretsbucket-1rrdrhvvhfy4e
-Checking rails/private_ssh_key
-Checking rails/id_rsa_github
-Checking private_ssh_key
-Checking id_rsa_github
-Downloading env file from env
-Evaluating 384 bytes of env
-Fixing permissions for 'buildkite-i-082595c4a6a306c37-1/rails/rails'...
-
-[90m# BUILDKITE_STACK_VERSION changed[0m
-[90m# PLUGINS_ENABLED changed[0m
-[90m# BUILDKITE_STACK_NAME changed[0m
-[90m# BUILDKITE_ECR_POLICY changed[0m
-[90m# AWS_REGION changed[0m
-[90m# BUILDKITE_SECRETS_BUCKET changed[0m
-[90m# BUILDKITE_GIT_CLONE_FLAGS is now "-v --depth 50"[0m
-[90m# AWS_DEFAULT_REGION changed[0m
-[90m# DOCKER_VERSION changed[0m
-[90m# ECR_PLUGIN_ENABLED changed[0m
-[90m# DOCKER_LOGIN_PLUGIN_ENABLED changed[0m
-[90m# BUILDKITE_REPO is now ""[0m
-[90m# SECRETS_PLUGIN_ENABLED changed[0m
-[90m# BUILDKITE_PLUGIN_S3_SECRETS_BUCKET changed[0m
-[90m# BUILDKITE_AGENTS_PER_INSTANCE changed[0m
-~~~ Setting up plugins
-[90m# Plugin "github.com/buildkite-plugins/artifacts-buildkite-plugin#v1.2.0" already checked out (93b22b3)[0m
-[90m# Plugin "github.com/buildkite-plugins/docker-compose-buildkite-plugin#v3.7.0" already checked out (bcb700d)[0m
-~~~ Running plugin docker-compose pre-checkout hook
-[90m$[0m var/lib/buildkite-agent/plugins/github-com-buildkite-plugins-docker-compose-buildkite-plugin-v3-7-0/hooks/pre-checkout
-~~~ Preparing working directory
-[90m$[0m cd /tmp/buildkite-job-c7f0615d-2623-457d-aa6f-407996511bc0637090903
-[90m# Skipping checkout, BUILDKITE_REPO is empty[0m
-~~~ Running global post-checkout hook
-[90m$[0m /etc/buildkite-agent/hooks/post-checkout
-~~~ Setting up vendored plugins
-~~~ Running global pre-command hook
-[90m$[0m /etc/buildkite-agent/hooks/pre-command
-~~~ Authenticating with AWS ECR
-WARNING! Using --password via the CLI is insecure. Use --password-stdin.
-WARNING! Your password will be stored unencrypted in /var/lib/buildkite-agent/.docker/config.json.
-Configure a credential helper to remove this warning. See
-https://docs.docker.com/engine/reference/commandline/login/#credentials-store
-
-Login Succeeded
-[90m# BUILDKITE_PLUGIN_ECR_LOGIN changed[0m
-~~~ Running plugin artifacts pre-command hook
-[90m$[0m /var/lib/buildkite-agent/plugins/github-com-buildkite-plugins-artifacts-buildkite-plugin-v1-2-0/hooks/pre-command
---- Downloading artifacts
-[38;5;48m2021-11-20 00:33:31 INFO  [0m [0mSearching for artifacts: ".buildkite/*"[0m
-[38;5;48m2021-11-20 00:33:31 INFO  [0m [0mFound 10 artifacts. Starting to download to: /tmp/buildkite-job-c7f0615d-2623-457d-aa6f-407996511bc0637090903[0m
-[38;5;48m2021-11-20 00:33:31 INFO  [0m [0mSuccessfully downloaded ".buildkite/.dockerignore" 82 bytes[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSuccessfully downloaded ".buildkite/Dockerfile" 5937 bytes[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSuccessfully downloaded ".buildkite/Dockerfile.beanstalkd" 96 bytes[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSuccessfully downloaded ".buildkite/await-all" 180 bytes[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSuccessfully downloaded ".buildkite/docker-compose.yml" 2773 bytes[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSuccessfully downloaded ".buildkite/initial.yml" 2113 bytes[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSuccessfully downloaded ".buildkite/pipeline-generate" 10135 bytes[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSuccessfully downloaded ".buildkite/runner" 241 bytes[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSuccessfully downloaded ".buildkite/.empty" 0 bytes[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSuccessfully downloaded ".buildkite/mysql-initdb.d/create.sql" 360 bytes[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSearching for artifacts: ".buildkite/**/*"[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mFound 1 artifacts. Starting to download to: /tmp/buildkite-job-c7f0615d-2623-457d-aa6f-407996511bc0637090903[0m
-[38;5;48m2021-11-20 00:33:32 INFO  [0m [0mSuccessfully downloaded ".buildkite/mysql-initdb.d/create.sql" 360 bytes[0m
-~~~ Running plugin docker-compose command hook
-[90m$[0m /var/lib/buildkite-agent/plugins/github-com-buildkite-plugins-docker-compose-buildkite-plugin-v3-7-0/hooks/command
-~~~ :docker: Pulling services default
-[90m$[0m docker-compose -f .buildkite/docker-compose.yml -p buildkitec7f0615d2623457daa6f407996511bc0 pull default
-Pulling default ... 
-[1A[2KPulling default ... pulling from builds[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... pulling fs layer[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... waiting[1B[1A[2KPulling default ... downloading (1.0%)[1B[1A[2KPulling default ... downloading (1.1%)[1B[1A[2KPulling default ... downloading (1.0%)[1B[1A[2KPulling default ... downloading (98.0%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (21.4%)[1B[1A[2KPulling default ... downloading (17.8%)[1B[1A[2KPulling default ... downloading (1.0%)[1B[1A[2KPulling default ... downloading (41.8%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (58.5%)[1B[1A[2KPulling default ... downloading (21.7%)[1B[1A[2KPulling default ... downloading (42.4%)[1B[1A[2KPulling default ... downloading (79.0%)[1B[1A[2KPulling default ... downloading (63.0%)[1B[1A[2KPulling default ... downloading (99.3%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (0.3%)[1B[1A[2KPulling default ... downloading (76.6%)[1B[1A[2KPulling default ... extracting (1.0%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (97.3%)[1B[1A[2KPulling default ... downloading (4.9%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... extracting (3.0%)[1B[1A[2KPulling default ... downloading (11.8%)[1B[1A[2KPulling default ... downloading (1.1%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (54.9%)[1B[1A[2KPulling default ... downloading (17.3%)[1B[1A[2KPulling default ... extracting (5.1%)[1B[1A[2KPulling default ... downloading (22.5%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (0.2%)[1B[1A[2KPulling default ... extracting (8.1%)[1B[1A[2KPulling default ... downloading (27.5%)[1B[1A[2KPulling default ... downloading (3.9%)[1B[1A[2KPulling default ... downloading (7.7%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... extracting (10.1%)[1B[1A[2KPulling default ... downloading (32.1%)[1B[1A[2KPulling default ... downloading (6.1%)[1B[1A[2KPulling default ... downloading (36.5%)[1B[1A[2KPulling default ... downloading (9.2%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... extracting (12.2%)[1B[1A[2KPulling default ... downloading (42.0%)[1B[1A[2KPulling default ... extracting (13.2%)[1B[1A[2KPulling default ... downloading (12.2%)[1B[1A[2KPulling default ... downloading (47.2%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (16.1%)[1B[1A[2KPulling default ... downloading (51.1%)[1B[1A[2KPulling default ... extracting (14.2%)[1B[1A[2KPulling default ... downloading (19.4%)[1B[1A[2KPulling default ... downloading (55.5%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (23.2%)[1B[1A[2KPulling default ... downloading (59.8%)[1B[1A[2KPulling default ... extracting (16.2%)[1B[1A[2KPulling default ... downloading (27.1%)[1B[1A[2KPulling default ... downloading (63.7%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... extracting (18.3%)[1B[1A[2KPulling default ... downloading (68.4%)[1B[1A[2KPulling default ... downloading (30.2%)[1B[1A[2KPulling default ... downloading (34.2%)[1B[1A[2KPulling default ... downloading (73.3%)[1B[1A[2KPulling default ... extracting (19.3%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... extracting (22.3%)[1B[1A[2KPulling default ... downloading (77.7%)[1B[1A[2KPulling default ... downloading (36.3%)[1B[1A[2KPulling default ... downloading (82.6%)[1B[1A[2KPulling default ... downloading (19.4%)[1B[1A[2KPulling default ... downloading (88.4%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (39.8%)[1B[1A[2KPulling default ... extracting (26.4%)[1B[1A[2KPulling default ... downloading (43.4%)[1B[1A[2KPulling default ... downloading (93.3%)[1B[1A[2KPulling default ... extracting (27.4%)[1B[1A[2KPulling default ... downloading (47.3%)[1B[1A[2KPulling default ... downloading (96.9%)[1B[1A[2KPulling default ... downloading (1.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (50.0%)[1B[1A[2KPulling default ... extracting (29.4%)[1B[1A[2KPulling default ... downloading (60.3%)[1B[1A[2KPulling default ... downloading (53.2%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... extracting (31.4%)[1B[1A[2KPulling default ... downloading (56.3%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (24.0%)[1B[1A[2KPulling default ... downloading (100.0%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... extracting (37.5%)[1B[1A[2KPulling default ... downloading (59.9%)[1B[1A[2KPulling default ... downloading (1.0%)[1B[1A[2KPulling default ... downloading (63.2%)[1B[1A[2KPulling default ... downloading (25.2%)[1B[1A[2KPulling default ... extracting (39.5%)[1B[1A[2KPulling default ... downloading (1.1%)[1B[1A[2KPulling default ... downloading (66.5%)[1B[1A[2KPulling default ... downloading (48.5%)[1B[1A[2KPulling default ... extracting (40.6%)[1B[1A[2KPulling default ... downloading (84.6%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... downloading (68.5%)[1B[1A[2KPulling default ... downloading (60.7%)[1B[1A[2KPulling default ... extracting (44.6%)[1B[1A[2KPulling default ... downloading (1.0%)[1B[1A[2KPulling default ... downloading (70.9%)[1B[1A[2KPulling default ... downloading (72.6%)[1B[1A[2KPulling default ... downloading (79.6%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... extracting (46.6%)[1B[1A[2KPulling default ... downloading (74.9%)[1B[1A[2KPulling default ... downloading (79.0%)[1B[1A[2KPulling default ... downloading (78.3%)[1B[1A[2KPulling default ... extracting (50.7%)[1B[1A[2KPulling default ... downloading (98.3%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... extracting (52.7%)[1B[1A[2KPulling default ... downloading (80.2%)[1B[1A[2KPulling default ... extracting (60.8%)[1B[1A[2KPulling default ... downloading (83.5%)[1B[1A[2KPulling default ... extracting (70.0%)[1B[1A[2KPulling default ... downloading (87.0%)[1B[1A[2KPulling default ... extracting (76.1%)[1B[1A[2KPulling default ... downloading (87.8%)[1B[1A[2KPulling default ... extracting (82.1%)[1B[1A[2KPulling default ... extracting (87.2%)[1B[1A[2KPulling default ... downloading (89.8%)[1B[1A[2KPulling default ... extracting (92.3%)[1B[1A[2KPulling default ... downloading (91.7%)[1B[1A[2KPulling default ... extracting (96.3%)[1B[1A[2KPulling default ... downloading (93.4%)[1B[1A[2KPulling default ... downloading (95.2%)[1B[1A[2KPulling default ... downloading (96.9%)[1B[1A[2KPulling default ... extracting (98.4%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... downloading (97.3%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (1.3%)[1B[1A[2KPulling default ... downloading (98.9%)[1B[1A[2KPulling default ... extracting (21.6%)[1B[1A[2KPulling default ... extracting (85.2%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (1.2%)[1B[1A[2KPulling default ... verifying checksum[1B[1A[2KPulling default ... download complete[1B[1A[2KPulling default ... extracting (27.7%)[1B[1A[2KPulling default ... extracting (89.2%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (1.0%)[1B[1A[2KPulling default ... extracting (11.2%)[1B[1A[2KPulling default ... extracting (19.4%)[1B[1A[2KPulling default ... extracting (27.6%)[1B[1A[2KPulling default ... extracting (33.7%)[1B[1A[2KPulling default ... extracting (38.8%)[1B[1A[2KPulling default ... extracting (42.9%)[1B[1A[2KPulling default ... extracting (48.0%)[1B[1A[2KPulling default ... extracting (52.1%)[1B[1A[2KPulling default ... extracting (57.2%)[1B[1A[2KPulling default ... extracting (63.3%)[1B[1A[2KPulling default ... extracting (67.4%)[1B[1A[2KPulling default ... extracting (72.5%)[1B[1A[2KPulling default ... extracting (79.6%)[1B[1A[2KPulling default ... extracting (86.8%)[1B[1A[2KPulling default ... extracting (91.9%)[1B[1A[2KPulling default ... extracting (96.0%)[1B[1A[2KPulling default ... extracting (99.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (0.3%)[1B[1A[2KPulling default ... extracting (2.3%)[1B[1A[2KPulling default ... extracting (5.1%)[1B[1A[2KPulling default ... extracting (7.4%)[1B[1A[2KPulling default ... extracting (8.5%)[1B[1A[2KPulling default ... extracting (9.1%)[1B[1A[2KPulling default ... extracting (9.6%)[1B[1A[2KPulling default ... extracting (10.2%)[1B[1A[2KPulling default ... extracting (10.8%)[1B[1A[2KPulling default ... extracting (11.6%)[1B[1A[2KPulling default ... extracting (12.2%)[1B[1A[2KPulling default ... extracting (15.0%)[1B[1A[2KPulling default ... extracting (17.3%)[1B[1A[2KPulling default ... extracting (20.1%)[1B[1A[2KPulling default ... extracting (23.0%)[1B[1A[2KPulling default ... extracting (24.4%)[1B[1A[2KPulling default ... extracting (26.6%)[1B[1A[2KPulling default ... extracting (28.9%)[1B[1A[2KPulling default ... extracting (31.5%)[1B[1A[2KPulling default ... extracting (32.9%)[1B[1A[2KPulling default ... extracting (33.7%)[1B[1A[2KPulling default ... extracting (35.7%)[1B[1A[2KPulling default ... extracting (37.7%)[1B[1A[2KPulling default ... extracting (39.7%)[1B[1A[2KPulling default ... extracting (41.7%)[1B[1A[2KPulling default ... extracting (43.9%)[1B[1A[2KPulling default ... extracting (45.9%)[1B[1A[2KPulling default ... extracting (47.9%)[1B[1A[2KPulling default ... extracting (50.5%)[1B[1A[2KPulling default ... extracting (53.3%)[1B[1A[2KPulling default ... extracting (55.6%)[1B[1A[2KPulling default ... extracting (58.4%)[1B[1A[2KPulling default ... extracting (60.7%)[1B[1A[2KPulling default ... extracting (62.7%)[1B[1A[2KPulling default ... extracting (64.9%)[1B[1A[2KPulling default ... extracting (67.5%)[1B[1A[2KPulling default ... extracting (69.7%)[1B[1A[2KPulling default ... extracting (71.7%)[1B[1A[2KPulling default ... extracting (73.4%)[1B[1A[2KPulling default ... extracting (75.1%)[1B[1A[2KPulling default ... extracting (76.5%)[1B[1A[2KPulling default ... extracting (78.0%)[1B[1A[2KPulling default ... extracting (80.8%)[1B[1A[2KPulling default ... extracting (84.8%)[1B[1A[2KPulling default ... extracting (88.2%)[1B[1A[2KPulling default ... extracting (90.7%)[1B[1A[2KPulling default ... extracting (92.4%)[1B[1A[2KPulling default ... extracting (93.8%)[1B[1A[2KPulling default ... extracting (95.3%)[1B[1A[2KPulling default ... extracting (97.0%)[1B[1A[2KPulling default ... extracting (98.4%)[1B[1A[2KPulling default ... extracting (99.2%)[1B[1A[2KPulling default ... extracting (99.8%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (1.1%)[1B[1A[2KPulling default ... extracting (16.9%)[1B[1A[2KPulling default ... extracting (50.8%)[1B[1A[2KPulling default ... extracting (58.7%)[1B[1A[2KPulling default ... extracting (88.1%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (0.2%)[1B[1A[2KPulling default ... extracting (1.4%)[1B[1A[2KPulling default ... extracting (2.8%)[1B[1A[2KPulling default ... extracting (4.1%)[1B[1A[2KPulling default ... extracting (5.3%)[1B[1A[2KPulling default ... extracting (8.1%)[1B[1A[2KPulling default ... extracting (11.3%)[1B[1A[2KPulling default ... extracting (14.0%)[1B[1A[2KPulling default ... extracting (16.0%)[1B[1A[2KPulling default ... extracting (17.6%)[1B[1A[2KPulling default ... extracting (19.2%)[1B[1A[2KPulling default ... extracting (20.7%)[1B[1A[2KPulling default ... extracting (22.3%)[1B[1A[2KPulling default ... extracting (24.1%)[1B[1A[2KPulling default ... extracting (25.5%)[1B[1A[2KPulling default ... extracting (26.9%)[1B[1A[2KPulling default ... extracting (27.6%)[1B[1A[2KPulling default ... extracting (29.2%)[1B[1A[2KPulling default ... extracting (32.4%)[1B[1A[2KPulling default ... extracting (35.3%)[1B[1A[2KPulling default ... extracting (37.7%)[1B[1A[2KPulling default ... extracting (38.1%)[1B[1A[2KPulling default ... extracting (38.9%)[1B[1A[2KPulling default ... extracting (40.7%)[1B[1A[2KPulling default ... extracting (42.6%)[1B[1A[2KPulling default ... extracting (44.2%)[1B[1A[2KPulling default ... extracting (45.6%)[1B[1A[2KPulling default ... extracting (47.0%)[1B[1A[2KPulling default ... extracting (49.0%)[1B[1A[2KPulling default ... extracting (50.9%)[1B[1A[2KPulling default ... extracting (52.7%)[1B[1A[2KPulling default ... extracting (53.5%)[1B[1A[2KPulling default ... extracting (54.5%)[1B[1A[2KPulling default ... extracting (55.9%)[1B[1A[2KPulling default ... extracting (57.7%)[1B[1A[2KPulling default ... extracting (59.4%)[1B[1A[2KPulling default ... extracting (61.2%)[1B[1A[2KPulling default ... extracting (63.4%)[1B[1A[2KPulling default ... extracting (64.8%)[1B[1A[2KPulling default ... extracting (66.7%)[1B[1A[2KPulling default ... extracting (69.5%)[1B[1A[2KPulling default ... extracting (71.3%)[1B[1A[2KPulling default ... extracting (72.7%)[1B[1A[2KPulling default ... extracting (74.2%)[1B[1A[2KPulling default ... extracting (75.6%)[1B[1A[2KPulling default ... extracting (77.2%)[1B[1A[2KPulling default ... extracting (79.0%)[1B[1A[2KPulling default ... extracting (80.6%)[1B[1A[2KPulling default ... extracting (81.5%)[1B[1A[2KPulling default ... extracting (82.7%)[1B[1A[2KPulling default ... extracting (84.3%)[1B[1A[2KPulling default ... extracting (86.1%)[1B[1A[2KPulling default ... extracting (87.3%)[1B[1A[2KPulling default ... extracting (89.0%)[1B[1A[2KPulling default ... extracting (89.4%)[1B[1A[2KPulling default ... extracting (89.8%)[1B[1A[2KPulling default ... extracting (92.0%)[1B[1A[2KPulling default ... extracting (93.8%)[1B[1A[2KPulling default ... extracting (94.8%)[1B[1A[2KPulling default ... extracting (95.8%)[1B[1A[2KPulling default ... extracting (96.9%)[1B[1A[2KPulling default ... extracting (98.1%)[1B[1A[2KPulling default ... extracting (99.3%)[1B[1A[2KPulling default ... extracting (99.9%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (38.7%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (1.1%)[1B[1A[2KPulling default ... extracting (5.7%)[1B[1A[2KPulling default ... extracting (10.2%)[1B[1A[2KPulling default ... extracting (15.9%)[1B[1A[2KPulling default ... extracting (21.6%)[1B[1A[2KPulling default ... extracting (23.8%)[1B[1A[2KPulling default ... extracting (26.1%)[1B[1A[2KPulling default ... extracting (28.4%)[1B[1A[2KPulling default ... extracting (30.6%)[1B[1A[2KPulling default ... extracting (37.4%)[1B[1A[2KPulling default ... extracting (42.0%)[1B[1A[2KPulling default ... extracting (46.5%)[1B[1A[2KPulling default ... extracting (51.1%)[1B[1A[2KPulling default ... extracting (56.7%)[1B[1A[2KPulling default ... extracting (62.4%)[1B[1A[2KPulling default ... extracting (74.9%)[1B[1A[2KPulling default ... extracting (81.7%)[1B[1A[2KPulling default ... extracting (89.6%)[1B[1A[2KPulling default ... extracting (95.3%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (1.1%)[1B[1A[2KPulling default ... extracting (7.4%)[1B[1A[2KPulling default ... extracting (17.0%)[1B[1A[2KPulling default ... extracting (29.7%)[1B[1A[2KPulling default ... extracting (33.9%)[1B[1A[2KPulling default ... extracting (37.1%)[1B[1A[2KPulling default ... extracting (40.3%)[1B[1A[2KPulling default ... extracting (44.6%)[1B[1A[2KPulling default ... extracting (49.9%)[1B[1A[2KPulling default ... extracting (53.0%)[1B[1A[2KPulling default ... extracting (57.3%)[1B[1A[2KPulling default ... extracting (62.6%)[1B[1A[2KPulling default ... extracting (65.8%)[1B[1A[2KPulling default ... extracting (75.3%)[1B[1A[2KPulling default ... extracting (80.6%)[1B[1A[2KPulling default ... extracting (83.8%)[1B[1A[2KPulling default ... extracting (87.0%)[1B[1A[2KPulling default ... extracting (89.1%)[1B[1A[2KPulling default ... extracting (91.2%)[1B[1A[2KPulling default ... extracting (94.4%)[1B[1A[2KPulling default ... extracting (98.7%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (1.2%)[1B[1A[2KPulling default ... extracting (3.5%)[1B[1A[2KPulling default ... extracting (12.7%)[1B[1A[2KPulling default ... extracting (26.5%)[1B[1A[2KPulling default ... extracting (34.6%)[1B[1A[2KPulling default ... extracting (39.2%)[1B[1A[2KPulling default ... extracting (78.3%)[1B[1A[2KPulling default ... extracting (96.7%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... extracting (1.1%)[1B[1A[2KPulling default ... extracting (2.2%)[1B[1A[2KPulling default ... extracting (8.7%)[1B[1A[2KPulling default ... extracting (20.6%)[1B[1A[2KPulling default ... extracting (55.3%)[1B[1A[2KPulling default ... extracting (58.6%)[1B[1A[2KPulling default ... extracting (67.2%)[1B[1A[2KPulling default ... extracting (70.5%)[1B[1A[2KPulling default ... extracting (73.7%)[1B[1A[2KPulling default ... extracting (80.2%)[1B[1A[2KPulling default ... extracting (84.6%)[1B[1A[2KPulling default ... extracting (96.5%)[1B[1A[2KPulling default ... extracting (100.0%)[1B[1A[2KPulling default ... pull complete[1B[1A[2KPulling default ... digest: sha256:08713d36325b94ac0f...[1B[1A[2KPulling default ... status: downloaded newer image fo...[1B[1A[2KPulling default ... [32mdone[0m[1B
-~~~ :docker: Building Docker Compose Service: default
-⚠️ No pre-built image found from a previous 'build' step for this service and config file. Building image...
-[90m$[0m docker-compose -f .buildkite/docker-compose.yml -p buildkitec7f0615d2623457daa6f407996511bc0 build --pull default
-default uses an image, skipping
-
-~~~ :docker: Starting dependencies
-[90m$[0m docker-compose -f .buildkite/docker-compose.yml -p buildkitec7f0615d2623457daa6f407996511bc0 up -d --scale default=0 default
-Creating network "buildkitec7f0615d2623457daa6f407996511bc0_default" with the default driver
-Pulling memcached (memcached:alpine)...
-[2Kalpine: Pulling from library/memcached
-
-[1A[2K97518928ae5f: Pulling fs layer[1B
-[1A[2Ke8dd13c8de54: Pulling fs layer[1B
-[1A[2Ked128e2fdfa5: Pulling fs layer[1B
-[1A[2K6e79216f34c8: Pulling fs layer[1B
-[1A[2K2081b9b9514a: Pulling fs layer[1B
-[1A[2K5422f709785b: Pulling fs layer[1B[3A[2K6e79216f34c8: Waiting[3B[2A[2K2081b9b9514a: Waiting[2B[1A[2K5422f709785b: Waiting[1B[5A[2Ke8dd13c8de54: Downloading [==================================================>]  1.265kB/1.265kB[5B[5A[2Ke8dd13c8de54: Download complete[5B[6A[2K97518928ae5f: Downloading [>                                                  ]  34.35kB/2.823MB[6B[4A[2Ked128e2fdfa5: Downloading [=>                                                 ]  3.628kB/156.1kB[4B[4A[2Ked128e2fdfa5: Downloading [==================================================>]  156.1kB/156.1kB[4B[4A[2Ked128e2fdfa5: Verifying Checksum[4B[4A[2Ked128e2fdfa5: Download complete[4B[6A[2K97518928ae5f: Verifying Checksum[6B[6A[2K97518928ae5f: Download complete[6B[6A[2K97518928ae5f: Extracting [>                                                  ]  32.77kB/2.823MB[6B[3A[2K6e79216f34c8: Downloading [>                                                  ]  17.96kB/941.1kB[3B[2A[2K2081b9b9514a: Downloading [==================================================>]     282B/282B[2B[2A[2K2081b9b9514a: Verifying Checksum[2B[2A[2K2081b9b9514a: Download complete[2B[3A[2K6e79216f34c8: Verifying Checksum[3B[3A[2K6e79216f34c8: Download complete[3B[1A[2K5422f709785b: Downloading [==================================================>]     121B/121B[1B[1A[2K5422f709785b: Verifying Checksum[1B[1A[2K5422f709785b: Download complete[1B[6A[2K97518928ae5f: Extracting [=================================>                 ]  1.901MB/2.823MB[6B[6A[2K97518928ae5f: Extracting [==================================================>]  2.823MB/2.823MB[6B[6A[2K97518928ae5f: Pull complete[6B[5A[2Ke8dd13c8de54: Extracting [==================================================>]  1.265kB/1.265kB[5B[5A[2Ke8dd13c8de54: Extracting [==================================================>]  1.265kB/1.265kB[5B[5A[2Ke8dd13c8de54: Pull complete[5B[4A[2Ked128e2fdfa5: Extracting [==========>                                        ]  32.77kB/156.1kB[4B[4A[2Ked128e2fdfa5: Extracting [==================================================>]  156.1kB/156.1kB[4B[4A[2Ked128e2fdfa5: Pull complete[4B[3A[2K6e79216f34c8: Extracting [=>                                                 ]  32.77kB/941.1kB[3B[3A[2K6e79216f34c8: Extracting [==================================================>]  941.1kB/941.1kB[3B[3A[2K6e79216f34c8: Extracting [==================================================>]  941.1kB/941.1kB[3B[3A[2K6e79216f34c8: Pull complete[3B[2A[2K2081b9b9514a: Extracting [==================================================>]     282B/282B[2B[2A[2K2081b9b9514a: Extracting [==================================================>]     282B/282B[2B[2A[2K2081b9b9514a: Pull complete[2B[1A[2K5422f709785b: Extracting [==================================================>]     121B/121B[1B[1A[2K5422f709785b: Extracting [==================================================>]     121B/121B[1B[1A[2K5422f709785b: Pull complete[1BPulling redis (redis:alpine)...
-[2Kalpine: Pulling from library/redis
-
-[1A[2K97518928ae5f: Already exists[1B
-[1A[2K66f8c4150d27: Pulling fs layer[1B
-[1A[2K09a8bf17a0bf: Pulling fs layer[1B
-[1A[2Ke547313af8e7: Pulling fs layer[1B
-[1A[2K335eeadfbde0: Pulling fs layer[1B
-[1A[2K7151fc2c01eb: Pulling fs layer[1B[2A[2K335eeadfbde0: Waiting[2B[1A[2K7151fc2c01eb: Waiting[1B[3A[2Ke547313af8e7: Downloading [>                                                  ]  85.55kB/7.707MB[3B[5A[2K66f8c4150d27: Downloading [==================================================>]  1.266kB/1.266kB[5B[5A[2K66f8c4150d27: Verifying Checksum[5B[5A[2K66f8c4150d27: Download complete[5B[5A[2K66f8c4150d27: Extracting [==================================================>]  1.266kB/1.266kB[5B[4A[2K09a8bf17a0bf: Downloading [==>                                                ]  16.94kB/406kB[4B[5A[2K66f8c4150d27: Extracting [==================================================>]  1.266kB/1.266kB[5B[4A[2K09a8bf17a0bf: Downloading [==================================================>]    406kB/406kB[4B[4A[2K09a8bf17a0bf: Verifying Checksum[4B[4A[2K09a8bf17a0bf: Download complete[4B[3A[2Ke547313af8e7: Verifying Checksum[3B[3A[2Ke547313af8e7: Download complete[3B[2A[2K335eeadfbde0: Downloading [==================================================>]     135B/135B[2B[2A[2K335eeadfbde0: Verifying Checksum[2B[2A[2K335eeadfbde0: Download complete[2B[1A[2K7151fc2c01eb: Downloading [==================================================>]     410B/410B[1B[1A[2K7151fc2c01eb: Verifying Checksum[1B[1A[2K7151fc2c01eb: Download complete[1B[5A[2K66f8c4150d27: Pull complete[5B[4A[2K09a8bf17a0bf: Extracting [====>                                              ]  32.77kB/406kB[4B[4A[2K09a8bf17a0bf: Extracting [================================================>  ]  393.2kB/406kB[4B[4A[2K09a8bf17a0bf: Extracting [==================================================>]    406kB/406kB[4B[4A[2K09a8bf17a0bf: Extracting [==================================================>]    406kB/406kB[4B[4A[2K09a8bf17a0bf: Pull complete[4B[3A[2Ke547313af8e7: Extracting [>                                                  ]   98.3kB/7.707MB[3B[3A[2Ke547313af8e7: Extracting [===========>                                       ]  1.769MB/7.707MB[3B[3A[2Ke547313af8e7: Extracting [=====================================>             ]    5.8MB/7.707MB[3B[3A[2Ke547313af8e7: Extracting [==================================================>]  7.707MB/7.707MB[3B[3A[2Ke547313af8e7: Pull complete[3B[2A[2K335eeadfbde0: Extracting [==================================================>]     135B/135B[2B[2A[2K335eeadfbde0: Extracting [==================================================>]     135B/135B[2B[2A[2K335eeadfbde0: Pull complete[2B[1A[2K7151fc2c01eb: Extracting [==================================================>]     410B/410B[1B[1A[2K7151fc2c01eb: Extracting [==================================================>]     410B/410B[1B[1A[2K7151fc2c01eb: Pull complete[1BCreating buildkitec7f0615d2623457daa6f407996511bc0_redis_1 ... 
-Creating buildkitec7f0615d2623457daa6f407996511bc0_memcached_1 ... 
-[1A[2KCreating buildkitec7f0615d2623457daa6f407996511bc0_memcached_1 ... [32mdone[0m[1B[2A[2KCreating buildkitec7f0615d2623457daa6f407996511bc0_redis_1     ... [32mdone[0m[2B
-+++ :docker: Running runner actionpack 'rake test' in service default
-[90m$[0m docker-compose -f .buildkite/docker-compose.yml -p buildkitec7f0615d2623457daa6f407996511bc0 run --name buildkitec7f0615d2623457daa6f407996511bc0_default_build_82655 --rm default runner actionpack 'rake test'
-Starting buildkitec7f0615d2623457daa6f407996511bc0_redis_1 ... 
-Starting buildkitec7f0615d2623457daa6f407996511bc0_memcached_1 ... 
-[1A[2KStarting buildkitec7f0615d2623457daa6f407996511bc0_memcached_1 ... [32mdone[0m[1B[2A[2KStarting buildkitec7f0615d2623457daa6f407996511bc0_redis_1     ... [32mdone[0m[2B
---- bundle env
-## Environment
-
-```
-Bundler       2.2.9
-  Platforms   ruby, x86_64-linux
-Ruby          2.7.4p191 (2021-07-07 revision a21a3b7d23704a01d34bd79d09dc37897e00922a) [x86_64-linux]
-  Full Path   /usr/local/bin/ruby
-  Config Dir  /usr/local/etc
-RubyGems      3.2.9
-  Gem Home    /usr/local/bundle
-  Gem Path    /root/.gem/ruby/2.7.0:/usr/local/lib/ruby/gems/2.7.0:/usr/local/bundle
-  User Home   /root
-  User Path   /root/.gem/ruby/2.7.0
-  Bin Dir     /usr/local/bundle/bin
-Tools         
-  Git         2.30.2
-  RVM         not installed
-  rbenv       not installed
-  chruby      not installed
-```
-
-## Bundler Build Metadata
-
-```
-Built At          2021-02-08
-Git SHA           30e740c073
-Released Version  true
-```
-
-## Bundler settings
-
-```
-jobs
-  Set for your local app (/usr/local/bundle/config): 8
-app_config
-  Set via BUNDLE_APP_CONFIG: "/usr/local/bundle"
-silence_root_warning
-  Set via BUNDLE_SILENCE_ROOT_WARNING: true
-```
-
-## Gemfile
-
-### Gemfile
-
-```ruby
-# frozen_string_literal: true
-
-source "https://rubygems.org"
-
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
-
-gemspec
-
-# We need a newish Rake since Active Job sets its test tasks' descriptions.
-gem "rake", ">= 11.1"
-
-gem "sprockets-rails", ">= 2.0.0"
-gem "propshaft", ">= 0.1.7"
-gem "capybara", ">= 3.26"
-gem "selenium-webdriver", ">= 4.0.0"
-
-gem "rack-cache", "~> 1.2"
-gem "stimulus-rails"
-gem "turbo-rails"
-gem "jsbundling-rails"
-gem "cssbundling-rails"
-gem "importmap-rails"
-gem "tailwindcss-rails"
-# require: false so bcrypt is loaded only when has_secure_password is used.
-# This is to avoid Active Model (and by extension the entire framework)
-# being dependent on a binary library.
-gem "bcrypt", "~> 3.1.11", require: false
-
-# This needs to be with require false to avoid it being automatically loaded by
-# sprockets.
-gem "terser", ">= 1.1.4", require: false
-
-# Explicitly avoid 1.x that doesn't support Ruby 2.4+
-gem "json", ">= 2.0.0"
-
-group :rubocop do
-  gem "rubocop", ">= 0.90", require: false
-  gem "rubocop-minitest", require: false
-  gem "rubocop-packaging", require: false
-  gem "rubocop-performance", require: false
-  gem "rubocop-rails", require: false
-end
-
-group :doc do
-  gem "sdoc", ">= 2.2.0"
-  gem "redcarpet", "~> 3.2.3", platforms: :ruby
-  gem "w3c_validators", "~> 1.3.6"
-  gem "kindlerb", "~> 1.2.0"
-  gem "rouge"
-end
-
-# Active Support
-gem "dalli", ">= 3.0.1"
-gem "listen", "~> 3.3", require: false
-gem "libxml-ruby", platforms: :ruby
-gem "connection_pool", require: false
-gem "rexml", require: false
-
-# for railties
-gem "bootsnap", ">= 1.4.4", require: false
-gem "webrick", require: false
-
-# Active Job
-group :job do
-  gem "resque", require: false
-  gem "resque-scheduler", require: false
-  gem "sidekiq", require: false
-  gem "sucker_punch", require: false
-  gem "delayed_job", require: false
-  gem "queue_classic", github: "jhawthorn/queue_classic", branch: "fix-connection-pg-14", require: false, platforms: :ruby
-  gem "sneakers", require: false
-  gem "que", require: false
-  gem "backburner", require: false
-  gem "delayed_job_active_record", require: false
-  gem "sequel", require: false
-end
-
-# Action Cable
-group :cable do
-  gem "puma", require: false
-
-  gem "hiredis", require: false
-  gem "redis", "~> 4.0", require: false
-
-  gem "redis-namespace"
-
-  gem "websocket-client-simple", github: "matthewd/websocket-client-simple", branch: "close-race", require: false
-end
-
-# Active Storage
-group :storage do
-  gem "aws-sdk-s3", require: false
-  gem "google-cloud-storage", "~> 1.11", require: false
-  gem "azure-storage-blob", "~> 2.0", require: false
-
-  gem "image_processing", "~> 1.2"
-end
-
-# Action Mailbox
-gem "aws-sdk-sns", require: false
-gem "webmock"
-
-group :ujs do
-  gem "webdrivers"
-end
-
-# Action View
-group :view do
-  gem "blade", require: false, platforms: [:ruby]
-  gem "sprockets-export", require: false
-end
-
-# Add your own local bundler stuff.
-local_gemfile = File.expand_path(".Gemfile", __dir__)
-instance_eval File.read local_gemfile if File.exist? local_gemfile
-
-group :test do
-  gem "minitest-bisect"
-  gem "minitest-ci", require: false
-  gem "minitest-retry"
-
-  platforms :mri do
-    gem "stackprof"
-    gem "debug", ">= 1.1.0", require: false
-  end
-
-  gem "benchmark-ips"
-end
-
-platforms :ruby, :mswin, :mswin64, :mingw, :x64_mingw do
-  gem "nokogiri", ">= 1.8.1", "!= 1.11.0"
-
-  # Needed for compiling the ActionDispatch::Journey parser.
-  gem "racc", ">=1.4.6", require: false
-
-  # Active Record.
-  gem "sqlite3", "~> 1.4"
-
-  group :db do
-    gem "pg", "~> 1.1"
-    gem "mysql2", "~> 0.5", github: "brianmario/mysql2"
-  end
-end
-
-platforms :jruby do
-  if ENV["AR_JDBC"]
-    gem "activerecord-jdbcsqlite3-adapter", github: "jruby/activerecord-jdbc-adapter", branch: "master"
-    group :db do
-      gem "activerecord-jdbcmysql-adapter", github: "jruby/activerecord-jdbc-adapter", branch: "master"
-      gem "activerecord-jdbcpostgresql-adapter", github: "jruby/activerecord-jdbc-adapter", branch: "master"
-    end
-  else
-    gem "activerecord-jdbcsqlite3-adapter", ">= 1.3.0"
-    group :db do
-      gem "activerecord-jdbcmysql-adapter", ">= 1.3.0"
-      gem "activerecord-jdbcpostgresql-adapter", ">= 1.3.0"
-    end
-  end
-end
-
-platforms :rbx do
-  # The rubysl-yaml gem doesn't ship with Psych by default as it needs
-  # libyaml that isn't always available.
-  gem "psych", "~> 3.0"
-end
-
-# Gems that are necessary for Active Record tests with Oracle.
-if ENV["ORACLE_ENHANCED"]
-  platforms :ruby do
-    gem "ruby-oci8", "~> 2.2"
-  end
-  gem "activerecord-oracle_enhanced-adapter", github: "rsim/oracle-enhanced", branch: "master"
-end
-
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "wdm", ">= 0.1.0", platforms: [:mingw, :mswin, :x64_mingw, :mswin64]
-
-if RUBY_VERSION >= "3.1"
-  # net-smtp, net-imap and net-pop were removed from default gems in Ruby 3.1, but is used by the `mail` gem.
-  # So we need to add them as dependencies until `mail` is fixed: https://github.com/mikel/mail/pull/1439
-  gem "net-smtp", require: false
-  gem "net-imap", require: false
-  gem "net-pop", require: false
-
-  # digest gem, which is one of the default gems has bumped to 3.1.0.pre for ruby 3.1.0dev.
-  gem "digest", "~> 3.1.0.pre", require: false
-
-  # matrix was removed from default gems in Ruby 3.1, but is used by the `capybara` gem.
-  # So we need to add it as a dependency until `capybara` is fixed: https://github.com/teamcapybara/capybara/pull/2468
-  gem "matrix", require: false
-end
-```
-
-### Gemfile.lock
-
-```
-GIT
-  remote: https://github.com/brianmario/mysql2.git
-  revision: 6652da20010ddfbbe6bceb8e41666d05e512346c
-  specs:
-    mysql2 (0.5.3)
-
-GIT
-  remote: https://github.com/jhawthorn/queue_classic.git
-  revision: dbfee9bda71020b8f11ae8d9b85932462b7fbee0
-  branch: fix-connection-pg-14
-  specs:
-    queue_classic (4.0.0.pre.alpha1)
-      pg (>= 0.17, < 2.0)
-
-GIT
-  remote: https://github.com/matthewd/websocket-client-simple.git
-  revision: e161305f1a466b9398d86df3b1731b03362da91b
-  branch: close-race
-  specs:
-    websocket-client-simple (0.3.0)
-      event_emitter
-      websocket
-
-PATH
-  remote: .
-  specs:
-    actioncable (7.0.0.alpha2)
-      actionpack (= 7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-      nio4r (~> 2.0)
-      websocket-driver (>= 0.6.1)
-    actionmailbox (7.0.0.alpha2)
-      actionpack (= 7.0.0.alpha2)
-      activejob (= 7.0.0.alpha2)
-      activerecord (= 7.0.0.alpha2)
-      activestorage (= 7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-      mail (>= 2.7.1)
-    actionmailer (7.0.0.alpha2)
-      actionpack (= 7.0.0.alpha2)
-      actionview (= 7.0.0.alpha2)
-      activejob (= 7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-      mail (~> 2.5, >= 2.5.4)
-      rails-dom-testing (~> 2.0)
-    actionpack (7.0.0.alpha2)
-      actionview (= 7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-      rack (~> 2.0, >= 2.2.0)
-      rack-test (>= 0.6.3)
-      rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actiontext (7.0.0.alpha2)
-      actionpack (= 7.0.0.alpha2)
-      activerecord (= 7.0.0.alpha2)
-      activestorage (= 7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-      nokogiri (>= 1.8.5)
-    actionview (7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-      builder (~> 3.1)
-      erubi (~> 1.4)
-      rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activejob (7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-      globalid (>= 0.3.6)
-    activemodel (7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-    activerecord (7.0.0.alpha2)
-      activemodel (= 7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-    activestorage (7.0.0.alpha2)
-      actionpack (= 7.0.0.alpha2)
-      activejob (= 7.0.0.alpha2)
-      activerecord (= 7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-      marcel (~> 1.0)
-      mini_mime (>= 1.1.0)
-    activesupport (7.0.0.alpha2)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 1.6, < 2)
-      minitest (>= 5.1)
-      tzinfo (~> 2.0)
-    rails (7.0.0.alpha2)
-      actioncable (= 7.0.0.alpha2)
-      actionmailbox (= 7.0.0.alpha2)
-      actionmailer (= 7.0.0.alpha2)
-      actionpack (= 7.0.0.alpha2)
-      actiontext (= 7.0.0.alpha2)
-      actionview (= 7.0.0.alpha2)
-      activejob (= 7.0.0.alpha2)
-      activemodel (= 7.0.0.alpha2)
-      activerecord (= 7.0.0.alpha2)
-      activestorage (= 7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-      bundler (>= 1.15.0)
-      railties (= 7.0.0.alpha2)
-    railties (7.0.0.alpha2)
-      actionpack (= 7.0.0.alpha2)
-      activesupport (= 7.0.0.alpha2)
-      method_source
-      rake (>= 12.2)
-      thor (~> 1.0)
-      zeitwerk (~> 2.5)
-
-GEM
-  remote: https://rubygems.org/
-  specs:
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
-    amq-protocol (2.3.2)
-    ast (2.4.2)
-    aws-eventstream (1.2.0)
-    aws-partitions (1.532.0)
-    aws-sdk-core (3.122.1)
-      aws-eventstream (~> 1, >= 1.0.2)
-      aws-partitions (~> 1, >= 1.525.0)
-      aws-sigv4 (~> 1.1)
-      jmespath (~> 1.0)
-    aws-sdk-kms (1.51.0)
-      aws-sdk-core (~> 3, >= 3.122.0)
-      aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.106.0)
-      aws-sdk-core (~> 3, >= 3.122.0)
-      aws-sdk-kms (~> 1)
-      aws-sigv4 (~> 1.4)
-    aws-sdk-sns (1.48.0)
-      aws-sdk-core (~> 3, >= 3.122.0)
-      aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.4.0)
-      aws-eventstream (~> 1, >= 1.0.2)
-    azure-storage-blob (2.0.2)
-      azure-storage-common (~> 2.0)
-      nokogiri (~> 1.11.0.rc2)
-    azure-storage-common (2.0.3)
-      faraday (~> 1.0)
-      faraday_middleware (~> 1.0.0.rc1)
-      net-http-persistent (~> 4.0)
-      nokogiri (~> 1.11.0.rc2)
-    backburner (1.5.0)
-      beaneater (~> 1.0)
-      concurrent-ruby (~> 1.0, >= 1.0.1)
-      dante (> 0.1.5)
-    bcrypt (3.1.16)
-    beaneater (1.1.1)
-    benchmark-ips (2.9.2)
-    blade (0.7.2)
-      activesupport (>= 3.0.0)
-      blade-qunit_adapter (>= 2.0.1)
-      coffee-script
-      coffee-script-source
-      curses (>= 1.4.0)
-      eventmachine
-      faye
-      sprockets (>= 3.0)
-      thin (>= 1.6.0)
-      thor (>= 0.19.1)
-      useragent (>= 0.16.7)
-    blade-qunit_adapter (2.0.1)
-    bootsnap (1.9.1)
-      msgpack (~> 1.0)
-    builder (3.2.4)
-    bunny (2.19.0)
-      amq-protocol (~> 2.3, >= 2.3.1)
-      sorted_set (~> 1, >= 1.0.2)
-    capybara (3.36.0)
-      addressable
-      matrix
-      mini_mime (>= 0.1.3)
-      nokogiri (~> 1.8)
-      rack (>= 1.6.0)
-      rack-test (>= 0.6.3)
-      regexp_parser (>= 1.5, < 3.0)
-      xpath (~> 3.2)
-    childprocess (4.1.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.9)
-    connection_pool (2.2.5)
-    cookiejar (0.3.3)
-    crack (0.4.5)
-      rexml
-    crass (1.0.6)
-    cssbundling-rails (0.2.6)
-      railties (>= 6.0.0)
-    curses (1.4.2)
-    daemons (1.4.1)
-    dalli (3.0.4)
-    dante (0.2.0)
-    debug (1.3.4)
-      irb (>= 1.3.6)
-      reline (>= 0.2.7)
-    declarative (0.0.20)
-    delayed_job (4.1.9)
-      activesupport (>= 3.0, < 6.2)
-    delayed_job_active_record (4.1.6)
-      activerecord (>= 3.0, < 6.2)
-      delayed_job (>= 3.0, < 5)
-    digest-crc (0.6.4)
-      rake (>= 12.0.0, < 14.0.0)
-    em-http-request (1.1.7)
-      addressable (>= 2.3.4)
-      cookiejar (!= 0.3.1)
-      em-socksify (>= 0.3)
-      eventmachine (>= 1.0.3)
-      http_parser.rb (>= 0.6.0)
-    em-socksify (0.3.2)
-      eventmachine (>= 1.0.0.beta.4)
-    erubi (1.10.0)
-    et-orbi (1.2.6)
-      tzinfo
-    event_emitter (0.2.6)
-    eventmachine (1.2.7)
-    execjs (2.8.1)
-    faraday (1.8.0)
-      faraday-em_http (~> 1.0)
-      faraday-em_synchrony (~> 1.0)
-      faraday-excon (~> 1.1)
-      faraday-httpclient (~> 1.0.1)
-      faraday-net_http (~> 1.0)
-      faraday-net_http_persistent (~> 1.1)
-      faraday-patron (~> 1.0)
-      faraday-rack (~> 1.0)
-      multipart-post (>= 1.2, < 3)
-      ruby2_keywords (>= 0.0.4)
-    faraday-em_http (1.0.0)
-    faraday-em_synchrony (1.0.0)
-    faraday-excon (1.1.0)
-    faraday-httpclient (1.0.1)
-    faraday-net_http (1.0.1)
-    faraday-net_http_persistent (1.2.0)
-    faraday-patron (1.0.0)
-    faraday-rack (1.0.0)
-    faraday_middleware (1.0.0)
-      faraday (~> 1.0)
-    faye (1.4.0)
-      cookiejar (>= 0.3.0)
-      em-http-request (>= 1.1.6)
-      eventmachine (>= 0.12.0)
-      faye-websocket (>= 0.11.0)
-      multi_json (>= 1.0.0)
-      rack (>= 1.0.0)
-      websocket-driver (>= 0.5.1)
-    faye-websocket (0.11.1)
-      eventmachine (>= 0.12.0)
-      websocket-driver (>= 0.5.1)
-    ffi (1.15.4)
-    fugit (1.5.2)
-      et-orbi (~> 1.1, >= 1.1.8)
-      raabro (~> 1.4)
-    globalid (0.5.2)
-      activesupport (>= 5.0)
-    google-apis-core (0.4.1)
-      addressable (~> 2.5, >= 2.5.1)
-      googleauth (>= 0.16.2, < 2.a)
-      httpclient (>= 2.8.1, < 3.a)
-      mini_mime (~> 1.0)
-      representable (~> 3.0)
-      retriable (>= 2.0, < 4.a)
-      rexml
-      webrick
-    google-apis-iamcredentials_v1 (0.8.0)
-      google-apis-core (>= 0.4, < 2.a)
-    google-apis-storage_v1 (0.9.0)
-      google-apis-core (>= 0.4, < 2.a)
-    google-cloud-core (1.6.0)
-      google-cloud-env (~> 1.0)
-      google-cloud-errors (~> 1.0)
-    google-cloud-env (1.5.0)
-      faraday (>= 0.17.3, < 2.0)
-    google-cloud-errors (1.2.0)
-    google-cloud-storage (1.34.1)
-      addressable (~> 2.5)
-      digest-crc (~> 0.4)
-      google-apis-iamcredentials_v1 (~> 0.1)
-      google-apis-storage_v1 (~> 0.1)
-      google-cloud-core (~> 1.6)
-      googleauth (>= 0.16.2, < 2.a)
-      mini_mime (~> 1.0)
-    googleauth (1.1.0)
-      faraday (>= 0.17.3, < 2.0)
-      jwt (>= 1.4, < 3.0)
-      memoist (~> 0.16)
-      multi_json (~> 1.11)
-      os (>= 0.9, < 2.0)
-      signet (>= 0.16, < 2.a)
-    hashdiff (1.0.1)
-    hiredis (0.6.3)
-    http_parser.rb (0.8.0)
-    httpclient (2.8.3)
-    i18n (1.8.11)
-      concurrent-ruby (~> 1.0)
-    image_processing (1.12.1)
-      mini_magick (>= 4.9.5, < 5)
-      ruby-vips (>= 2.0.17, < 3)
-    importmap-rails (0.8.2)
-      rails (>= 6.0.0)
-    io-console (0.5.9)
-    irb (1.3.7)
-      reline (>= 0.2.7)
-    jmespath (1.4.0)
-    jsbundling-rails (0.2.1)
-      railties (>= 6.0.0)
-    json (2.6.1)
-    jwt (2.3.0)
-    kindlerb (1.2.0)
-      mustache
-      nokogiri
-    libxml-ruby (3.2.1)
-    listen (3.7.0)
-      rb-fsevent (~> 0.10, >= 0.10.3)
-      rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.12.0)
-      crass (~> 1.0.2)
-      nokogiri (>= 1.5.9)
-    mail (2.7.1)
-      mini_mime (>= 0.1.1)
-    marcel (1.0.2)
-    matrix (0.4.2)
-    memoist (0.16.2)
-    method_source (1.0.0)
-    mini_magick (4.11.0)
-    mini_mime (1.1.2)
-    minitest (5.14.4)
-    minitest-bisect (1.5.1)
-      minitest-server (~> 1.0)
-      path_expander (~> 1.1)
-    minitest-ci (3.4.0)
-      minitest (>= 5.0.6)
-    minitest-retry (0.2.2)
-      minitest (>= 5.0)
-    minitest-server (1.0.6)
-      minitest (~> 5.0)
-    mono_logger (1.1.1)
-    msgpack (1.4.2)
-    multi_json (1.15.0)
-    multipart-post (2.1.1)
-    mustache (1.1.1)
-    mustermann (1.1.1)
-      ruby2_keywords (~> 0.0.1)
-    net-http-persistent (4.0.1)
-      connection_pool (~> 2.2)
-    nio4r (2.5.8)
-    nokogiri (1.11.7-x86_64-linux)
-      racc (~> 1.4)
-    os (1.1.4)
-    parallel (1.21.0)
-    parser (3.0.2.0)
-      ast (~> 2.4.1)
-    path_expander (1.1.0)
-    pg (1.2.3)
-    propshaft (0.2.2)
-      rails (>= 7.0.0.alpha2)
-    psych (3.3.2)
-    public_suffix (4.0.6)
-    puma (5.5.2)
-      nio4r (~> 2.0)
-    que (0.14.3)
-    raabro (1.4.0)
-    racc (1.6.0)
-    rack (2.2.3)
-    rack-cache (1.13.0)
-      rack (>= 0.4)
-    rack-protection (2.1.0)
-      rack
-    rack-test (1.1.0)
-      rack (>= 1.0, < 3)
-    rails-dom-testing (2.0.3)
-      activesupport (>= 4.2.0)
-      nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.2)
-      loofah (~> 2.3)
-    rainbow (3.0.0)
-    rake (13.0.6)
-    rb-fsevent (0.11.0)
-    rb-inotify (0.10.1)
-      ffi (~> 1.0)
-    rbtree (0.4.4)
-    rdoc (6.3.3)
-    redcarpet (3.2.3)
-    redis (4.5.1)
-    redis-namespace (1.8.1)
-      redis (>= 3.0.4)
-    regexp_parser (2.1.1)
-    reline (0.2.7)
-      io-console (~> 0.5)
-    representable (3.1.1)
-      declarative (< 0.1.0)
-      trailblazer-option (>= 0.1.1, < 0.2.0)
-      uber (< 0.2.0)
-    resque (2.2.0)
-      mono_logger (~> 1.0)
-      multi_json (~> 1.0)
-      redis-namespace (~> 1.6)
-      sinatra (>= 0.9.2)
-      vegas (~> 0.1.2)
-    resque-scheduler (4.5.0)
-      mono_logger (~> 1.0)
-      redis (>= 3.3)
-      resque (>= 1.27)
-      rufus-scheduler (~> 3.2, < 3.7)
-    retriable (3.1.2)
-    rexml (3.2.5)
-    rouge (3.26.1)
-    rubocop (1.23.0)
-      parallel (~> 1.10)
-      parser (>= 3.0.0.0)
-      rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8, < 3.0)
-      rexml
-      rubocop-ast (>= 1.12.0, < 2.0)
-      ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.13.0)
-      parser (>= 3.0.1.1)
-    rubocop-minitest (0.16.0)
-      rubocop (>= 0.90, < 2.0)
-    rubocop-packaging (0.5.1)
-      rubocop (>= 0.89, < 2.0)
-    rubocop-performance (1.12.0)
-      rubocop (>= 1.7.0, < 2.0)
-      rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.12.4)
-      activesupport (>= 4.2.0)
-      rack (>= 1.1)
-      rubocop (>= 1.7.0, < 2.0)
-    ruby-progressbar (1.11.0)
-    ruby-vips (2.1.3)
-      ffi (~> 1.12)
-    ruby2_keywords (0.0.5)
-    rubyzip (2.3.2)
-    rufus-scheduler (3.6.0)
-      fugit (~> 1.1, >= 1.1.6)
-    sdoc (2.2.0)
-      rdoc (>= 5.0)
-    selenium-webdriver (4.0.3)
-      childprocess (>= 0.5, < 5.0)
-      rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2)
-    sequel (5.50.0)
-    serverengine (2.0.7)
-      sigdump (~> 0.2.2)
-    set (1.0.2)
-    sidekiq (6.3.1)
-      connection_pool (>= 2.2.2)
-      rack (~> 2.0)
-      redis (>= 4.2.0)
-    sigdump (0.2.4)
-    signet (0.16.0)
-      addressable (~> 2.8)
-      faraday (>= 0.17.3, < 2.0)
-      jwt (>= 1.5, < 3.0)
-      multi_json (~> 1.10)
-    sinatra (2.1.0)
-      mustermann (~> 1.0)
-      rack (~> 2.2)
-      rack-protection (= 2.1.0)
-      tilt (~> 2.0)
-    sneakers (2.11.0)
-      bunny (~> 2.12)
-      concurrent-ruby (~> 1.0)
-      rake
-      serverengine (~> 2.0.5)
-      thor
-    sorted_set (1.0.3)
-      rbtree
-      set (~> 1.0)
-    sprockets (4.0.2)
-      concurrent-ruby (~> 1.0)
-      rack (> 1, < 3)
-    sprockets-export (1.0.0)
-    sprockets-rails (3.4.0)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
-    stackprof (0.2.17)
-    stimulus-rails (0.7.2)
-      rails (>= 6.0.0)
-    sucker_punch (3.0.1)
-      concurrent-ruby (~> 1.0)
-    tailwindcss-rails (0.5.1)
-      rails (>= 6.0.0)
-    terser (1.1.7)
-      execjs (>= 0.3.0, < 3)
-    thin (1.8.1)
-      daemons (~> 1.0, >= 1.0.9)
-      eventmachine (~> 1.0, >= 1.0.4)
-      rack (>= 1, < 3)
-    thor (1.1.0)
-    tilt (2.0.10)
-    trailblazer-option (0.1.2)
-    turbo-rails (0.8.3)
-      rails (>= 6.0.0)
-    tzinfo (2.0.4)
-      concurrent-ruby (~> 1.0)
-    uber (0.1.0)
-    unicode-display_width (2.1.0)
-    useragent (0.16.10)
-    vegas (0.1.11)
-      rack (>= 1.0.0)
-    w3c_validators (1.3.6)
-      json (>= 1.8)
-      nokogiri (~> 1.6)
-      rexml (~> 3.2)
-    webdrivers (5.0.0)
-      nokogiri (~> 1.6)
-      rubyzip (>= 1.3.0)
-      selenium-webdriver (~> 4.0)
-    webmock (3.14.0)
-      addressable (>= 2.8.0)
-      crack (>= 0.3.2)
-      hashdiff (>= 0.4.0, < 2.0.0)
-    webrick (1.7.0)
-    websocket (1.2.9)
-    websocket-driver (0.7.5)
-      websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.5)
-    xpath (3.2.0)
-      nokogiri (~> 1.8)
-    zeitwerk (2.5.1)
-
-PLATFORMS
-  x86_64-linux
-
-DEPENDENCIES
-  activerecord-jdbcmysql-adapter (>= 1.3.0)
-  activerecord-jdbcpostgresql-adapter (>= 1.3.0)
-  activerecord-jdbcsqlite3-adapter (>= 1.3.0)
-  aws-sdk-s3
-  aws-sdk-sns
-  azure-storage-blob (~> 2.0)
-  backburner
-  bcrypt (~> 3.1.11)
-  benchmark-ips
-  blade
-  bootsnap (>= 1.4.4)
-  capybara (>= 3.26)
-  connection_pool
-  cssbundling-rails
-  dalli (>= 3.0.1)
-  debug (>= 1.1.0)
-  delayed_job
-  delayed_job_active_record
-  google-cloud-storage (~> 1.11)
-  hiredis
-  image_processing (~> 1.2)
-  importmap-rails
-  jsbundling-rails
-  json (>= 2.0.0)
-  kindlerb (~> 1.2.0)
-  libxml-ruby
-  listen (~> 3.3)
-  minitest-bisect
-  minitest-ci
-  minitest-retry
-  mysql2 (~> 0.5)!
-  nokogiri (>= 1.8.1, != 1.11.0)
-  pg (~> 1.1)
-  propshaft (>= 0.1.7)
-  psych (~> 3.0)
-  puma
-  que
-  queue_classic!
-  racc (>= 1.4.6)
-  rack-cache (~> 1.2)
-  rails!
-  rake (>= 11.1)
-  redcarpet (~> 3.2.3)
-  redis (~> 4.0)
-  redis-namespace
-  resque
-  resque-scheduler
-  rexml
-  rouge
-  rubocop (>= 0.90)
-  rubocop-minitest
-  rubocop-packaging
-  rubocop-performance
-  rubocop-rails
-  sdoc (>= 2.2.0)
-  selenium-webdriver (>= 4.0.0)
-  sequel
-  sidekiq
-  sneakers
-  sprockets-export
-  sprockets-rails (>= 2.0.0)
-  sqlite3 (~> 1.4)
-  stackprof
-  stimulus-rails
-  sucker_punch
-  tailwindcss-rails
-  terser (>= 1.1.4)
-  turbo-rails
-  tzinfo-data
-  w3c_validators (~> 1.3.6)
-  wdm (>= 0.1.0)
-  webdrivers
-  webmock
-  webrick
-  websocket-client-simple!
-
-BUNDLED WITH
-   2.2.9
-```
-
-## Gemspecs
-
-### rails.gemspec
-
-```ruby
-# frozen_string_literal: true
-
-version = File.read(File.expand_path("RAILS_VERSION", __dir__)).strip
-
-Gem::Specification.new do |s|
-  s.platform    = Gem::Platform::RUBY
-  s.name        = "rails"
-  s.version     = version
-  s.summary     = "Full-stack web application framework."
-  s.description = "Ruby on Rails is a full-stack web framework optimized for programmer happiness and sustainable productivity. It encourages beautiful code by favoring convention over configuration."
-
-  s.required_ruby_version     = ">= 2.7.0"
-  s.required_rubygems_version = ">= 1.8.11"
-
-  s.license = "MIT"
-
-  s.author   = "David Heinemeier Hansson"
-  s.email    = "david@loudthinking.com"
-  s.homepage = "https://rubyonrails.org"
-
-  s.files = ["README.md"]
-
-  s.metadata = {
-    "bug_tracker_uri"   => "https://github.com/rails/rails/issues",
-    "changelog_uri"     => "https://github.com/rails/rails/releases/tag/v#{version}",
-    "documentation_uri" => "https://api.rubyonrails.org/v#{version}/",
-    "mailing_list_uri"  => "https://discuss.rubyonrails.org/c/rubyonrails-talk",
-    "source_code_uri"   => "https://github.com/rails/rails/tree/v#{version}",
-    "rubygems_mfa_required" => "true",
-  }
-
-  s.add_dependency "activesupport", version
-  s.add_dependency "actionpack",    version
-  s.add_dependency "actionview",    version
-  s.add_dependency "activemodel",   version
-  s.add_dependency "activerecord",  version
-  s.add_dependency "actionmailer",  version
-  s.add_dependency "activejob",     version
-  s.add_dependency "actioncable",   version
-  s.add_dependency "activestorage", version
-  s.add_dependency "actionmailbox", version
-  s.add_dependency "actiontext",    version
-  s.add_dependency "railties",      version
-
-  s.add_dependency "bundler", ">= 1.15.0"
-end
-```
-+++  
-+++ actionpack: rake test
-/usr/local/bin/ruby -w -I"lib:test" /usr/local/bundle/gems/rake-13.0.6/lib/rake/rake_test_loader.rb "test/abstract/callbacks_test.rb" "test/abstract/collector_test.rb" "test/abstract/translation_test.rb" "test/assertions/response_assertions_test.rb" "test/controller/action_pack_assertions_test.rb" "test/controller/api/conditional_get_test.rb" "test/controller/api/data_streaming_test.rb" "test/controller/api/implicit_render_test.rb" "test/controller/api/params_wrapper_test.rb" "test/controller/api/redirect_to_test.rb" "test/controller/api/renderers_test.rb" "test/controller/api/url_for_test.rb" "test/controller/api/with_cookies_test.rb" "test/controller/api/with_helpers_test.rb" "test/controller/base_test.rb" "test/controller/caching_test.rb" "test/controller/content_type_test.rb" "test/controller/default_url_options_with_before_action_test.rb" "test/controller/filters_test.rb" "test/controller/flash_hash_test.rb" "test/controller/flash_test.rb" "test/controller/form_builder_test.rb" "test/controller/helper_test.rb" "test/controller/http_basic_authentication_test.rb" "test/controller/http_digest_authentication_test.rb" "test/controller/http_token_authentication_test.rb" "test/controller/integration_test.rb" "test/controller/live_stream_test.rb" "test/controller/localized_templates_test.rb" "test/controller/log_subscriber_test.rb" "test/controller/logging_test.rb" "test/controller/metal/renderers_test.rb" "test/controller/metal_test.rb" "test/controller/mime/accept_format_test.rb" "test/controller/mime/respond_to_test.rb" "test/controller/new_base/bare_metal_test.rb" "test/controller/new_base/base_test.rb" "test/controller/new_base/content_negotiation_test.rb" "test/controller/new_base/content_type_test.rb" "test/controller/new_base/middleware_test.rb" "test/controller/new_base/render_action_test.rb" "test/controller/new_base/render_body_test.rb" "test/controller/new_base/render_file_test.rb" "test/controller/new_base/render_html_test.rb" "test/controller/new_base/render_implicit_action_test.rb" "test/controller/new_base/render_layout_test.rb" "test/controller/new_base/render_partial_test.rb" "test/controller/new_base/render_plain_test.rb" "test/controller/new_base/render_streaming_test.rb" "test/controller/new_base/render_template_test.rb" "test/controller/new_base/render_test.rb" "test/controller/new_base/render_xml_test.rb" "test/controller/output_escaping_test.rb" "test/controller/parameter_encoding_test.rb" "test/controller/parameters/accessors_test.rb" "test/controller/parameters/always_permitted_parameters_test.rb" "test/controller/parameters/dup_test.rb" "test/controller/parameters/log_on_unpermitted_params_test.rb" "test/controller/parameters/multi_parameter_attributes_test.rb" "test/controller/parameters/mutators_test.rb" "test/controller/parameters/nested_parameters_permit_test.rb" "test/controller/parameters/parameters_permit_test.rb" "test/controller/parameters/raise_on_unpermitted_params_test.rb" "test/controller/parameters/serialization_test.rb" "test/controller/params_parse_test.rb" "test/controller/params_wrapper_test.rb" "test/controller/permitted_params_test.rb" "test/controller/redirect_test.rb" "test/controller/render_js_test.rb" "test/controller/render_json_test.rb" "test/controller/render_test.rb" "test/controller/render_to_string_test.rb" "test/controller/render_xml_test.rb" "test/controller/renderer_test.rb" "test/controller/renderers_test.rb" "test/controller/request/test_request_test.rb" "test/controller/request_forgery_protection_test.rb" "test/controller/required_params_test.rb" "test/controller/rescue_test.rb" "test/controller/resources_test.rb" "test/controller/route_helpers_test.rb" "test/controller/routing_test.rb" "test/controller/runner_test.rb" "test/controller/send_file_test.rb" "test/controller/show_exceptions_test.rb" "test/controller/streaming_test.rb" "test/controller/test_case_test.rb" "test/controller/url_for_integration_test.rb" "test/controller/url_for_test.rb" "test/controller/url_rewriter_test.rb" "test/controller/webservice_test.rb" "test/dispatch/actionable_exceptions_test.rb" "test/dispatch/callbacks_test.rb" "test/dispatch/content_disposition_test.rb" "test/dispatch/content_security_policy_test.rb" "test/dispatch/cookies_test.rb" "test/dispatch/debug_exceptions_test.rb" "test/dispatch/debug_locks_test.rb" "test/dispatch/exception_wrapper_test.rb" "test/dispatch/executor_test.rb" "test/dispatch/header_test.rb" "test/dispatch/host_authorization_test.rb" "test/dispatch/live_response_test.rb" "test/dispatch/mapper_test.rb" "test/dispatch/middleware_stack_test.rb" "test/dispatch/mime_type_test.rb" "test/dispatch/mount_test.rb" "test/dispatch/permissions_policy_test.rb" "test/dispatch/prefix_generation_test.rb" "test/dispatch/rack_cache_test.rb" "test/dispatch/reloader_test.rb" "test/dispatch/request/json_params_parsing_test.rb" "test/dispatch/request/multipart_params_parsing_test.rb" "test/dispatch/request/query_string_parsing_test.rb" "test/dispatch/request/session_test.rb" "test/dispatch/request/url_encoded_params_parsing_test.rb" "test/dispatch/request_id_test.rb" "test/dispatch/request_test.rb" "test/dispatch/response_test.rb" "test/dispatch/routing/concerns_test.rb" "test/dispatch/routing/custom_url_helpers_test.rb" "test/dispatch/routing/inspector_test.rb" "test/dispatch/routing/ipv6_redirect_test.rb" "test/dispatch/routing/non_dispatch_routed_app_test.rb" "test/dispatch/routing/route_set_test.rb" "test/dispatch/routing_assertions_test.rb" "test/dispatch/routing_test.rb" "test/dispatch/runner_test.rb" "test/dispatch/server_timing_test.rb" "test/dispatch/session/abstract_secure_store_test.rb" "test/dispatch/session/abstract_store_test.rb" "test/dispatch/session/cache_store_test.rb" "test/dispatch/session/cookie_store_test.rb" "test/dispatch/session/mem_cache_store_test.rb" "test/dispatch/session/test_session_test.rb" "test/dispatch/show_exceptions_test.rb" "test/dispatch/ssl_test.rb" "test/dispatch/static_test.rb" "test/dispatch/system_testing/driver_test.rb" "test/dispatch/system_testing/screenshot_helper_test.rb" "test/dispatch/system_testing/server_test.rb" "test/dispatch/system_testing/system_test_case_test.rb" "test/dispatch/test_request_test.rb" "test/dispatch/test_response_test.rb" "test/dispatch/uploaded_file_test.rb" "test/dispatch/url_generation_test.rb" "test/journey/gtg/builder_test.rb" "test/journey/gtg/transition_table_test.rb" "test/journey/nodes/ast_test.rb" "test/journey/nodes/symbol_test.rb" "test/journey/path/pattern_test.rb" "test/journey/route/definition/parser_test.rb" "test/journey/route/definition/scanner_test.rb" "test/journey/route_test.rb" "test/journey/router/utils_test.rb" "test/journey/router_test.rb" "test/journey/routes_test.rb" "test/routing/helper_test.rb" 
-Running 3527 tests in parallel using 4 processes
-Run options: --seed 38974
-
-# Running:
-
-[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
-[Minitest::CI] Generating test report in JUnit XML format...
-
-
-Finished in 30.233765s, 116.6577 runs/s, 552.0318 assertions/s.
-3527 runs, 16690 assertions, 0 failures, 0 errors, 0 skips
-~~~ Running plugin artifacts post-command hook
-[90m$[0m /var/lib/buildkite-agent/plugins/github-com-buildkite-plugins-artifacts-buildkite-plugin-v1-2-0/hooks/post-command
-/tmp/buildkite-job-c7f0615d-2623-457d-aa6f-407996511bc0637090903 /tmp/buildkite-job-c7f0615d-2623-457d-aa6f-407996511bc0637090903
-/tmp/buildkite-job-c7f0615d-2623-457d-aa6f-407996511bc0637090903
-[90m# OLDPWD changed[0m
-~~~ Uploading artifacts
-[90m$[0m buildkite-agent artifact upload test-reports/*/*.xml
-[38;5;48m2021-11-20 00:34:45 INFO  [0m [0mFound 342 files that match "test-reports/*/*.xml"[0m
-[38;5;48m2021-11-20 00:34:45 INFO  [0m [0mCreating (0-30)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:45 INFO  [0m [0mCreating (30-60)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:45 INFO  [0m [0mCreating (60-90)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mCreating (90-120)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mCreating (120-150)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mCreating (150-180)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mCreating (180-210)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mCreating (210-240)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mCreating (240-270)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mCreating (270-300)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mCreating (300-330)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mCreating (330-342)/342 artifacts[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact 4d11d633-692a-4737-9b94-47c17ca02706 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SetHostTest.xml (344 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact fecad9fb-870b-475c-a2e8-163a145310d9 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RendererTest.xml (2921 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact 92937614-3533-412d-bb07-9f56e5e11c7d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AcceptBasedContentTypeTest.xml (716 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact d9abd5d4-813f-4d06-88ca-4e70cefa79b8 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionController_StreamingResponseTest.xml (353 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact ed6330e5-e767-4256-9f6e-95d54a1f6921 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RedirectToApiTest.xml (333 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact 09c90f3b-78df-4f49-83d1-8d8b922d930b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestInvalidUrls.xml (640 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact 9518e5cb-afe3-4a9a-8a05-ad505a99af5a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-FlashRedirectTest.xml (340 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact 62cc811c-f0ba-4d2b-88ee-ab15970b0231 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-CookiesTest.xml (16803 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact 0163dda6-2084-47bd-9230-e891500421f1 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ImplicitRenderAPITest.xml (358 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact 3e4e418b-d605-428e-be22-4c229afc035d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IPv6IntegrationTest.xml (348 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact 3cc81931-589f-433c-82c1-0c769d5fa456 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-FunctionalFragmentCachingTest.xml (1623 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact 008b3061-4d70-4035-892a-723a03a7ee96 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderJSTest.xml (464 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact 1daab154-9def-4752-a600-111d41e57df4 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HttpCacheForeverTest.xml (750 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact be5bbdb8-55d3-474c-b139-f8b33ff49a7a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestUnicodePaths.xml (334 bytes)[0m
-[38;5;48m2021-11-20 00:34:46 INFO  [0m [0mUploading artifact f5e91032-0104-4598-b075-d559039871d0 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderAction_RenderActionTest.xml (1094 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact f6f7e184-5fa0-40e6-b1e8-4c847c359b97 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TestCallbacksWithConditions.xml (789 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 450f7c79-6539-499c-b14a-e7fd12333f1c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TranslationControllerTest.xml (2622 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact f0e62fe7-53bf-48e2-94b5-b69759bd95db test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ControllerLayouts_RenderLayoutTest.xml (1136 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 75da4cd0-284b-4446-92cf-3113c676f0a9 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Journey_Path_TestPattern.xml (7663 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact efb4f0e3-7892-42a4-a724-209640943b96 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HttpTokenAuthenticationTest.xml (6452 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact de898729-648a-44cd-8f37-bbf198e7df19 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IrregularInflectionParamsWrapperTest.xml (392 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 6af7f450-116c-4266-bb53-6c4726e20f4d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestTildeAndMinusPaths.xml (467 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 268ee413-075a-47e7-8930-25ffa4d489c6 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ServerTimingTest.xml (865 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 4361181b-a818-4872-99e3-b74a663b938b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-OptionalDefaultUrlOptionsControllerTest.xml (390 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 3cb6f558-424c-46fc-8861-85cd56c9142c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ContentSecurityPolicyIntegrationTest.xml (1393 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 998f504d-26d1-4975-87f3-f2e2a2c71b04 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestUrlConstraints.xml (1058 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 95b903b1-35fa-41c8-b247-af2e404cab68 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionController_TestRequestTest.xml (4968 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 942ce6af-3f6d-4bff-b9c1-dfc55a444556 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Journey_Router_TestUtils.xml (1430 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact a520a31e-ae68-47e1-b455-a84766de4aef test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestAppendingRoutes.xml (620 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 17ba43c7-9cd1-4ff5-a57b-a5aa0a41f6a0 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestRoutingMount.xml (1608 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 0955ab9c-3234-4622-a5fc-4cfbd774c3a0 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderHtml_RenderHtmlTest.xml (2936 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 45fecfe4-968a-41a1-bf49-6d77d10e061d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MiddlewareTest_TestInheritedMiddleware.xml (953 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact cdcc3400-8b44-4564-b83a-f5910e8767ec test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RouteHelperIntegrationTest.xml (372 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 08e36c7e-28f4-4c57-9603-d7f9784ff443 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MimeTypeTest.xml (3925 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact b6370909-5979-4fba-b39b-f48a793afdc1 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionControllerPermittedParamsTest.xml (538 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact b673484a-f5aa-4913-9153-03bc5dce378c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestRackAppRouteGeneration.xml (367 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact ddf52dd1-f508-4414-a800-712071cc89e7 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestFormData.xml (695 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact ee709e28-75de-47ce-a466-4023e22a93b2 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-Render_RenderTest.xml (502 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 68514678-38ba-47df-858b-e5a5a622c18f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-LegacyRouteSetTests.xml (9990 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 04e58ee4-95d8-481e-b128-5d0631a3af55 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-LastModifiedRenderTest.xml (3344 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 3e5e12cf-64b2-49b2-b970-5ae693fb3f07 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Journey_TestRoute.xml (1644 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact c9413bf9-9a5d-4882-83e3-bd98f0eadad1 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RescueTest.xml (464 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact e385ec12-1f1c-4192-bcca-73e8b70a908c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-DebugLocksTest.xml (334 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 0a75b17c-7677-413f-8b0e-084e4d7e7ecb test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Journey_Definition_TestParser.xml (3049 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact abe72503-e4e5-426a-8e65-d00e8167c7fb test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionController_SSETest.xml (866 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact a9bc3645-6c71-4c04-a8b0-41da0843c7be test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-QueryStringParsingTest.xml (2909 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact ef77476e-a6fe-4e1f-92e6-a047311717ec test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Journey_Definition_TestScanner.xml (3640 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact dd36798a-48c5-42fd-ba37-c930315d4b92 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-JsonParamsParsingTest.xml (1601 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact b42f09d1-ea01-4ed9-94fb-9f308d29fc78 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ControllerClassTests.xml (620 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact d08eda21-d08b-4a9b-8c94-072631d7e96c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IntegrationRequestsWithoutSetup.xml (339 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 7228a508-e1b7-43f5-a8cb-c6a163110054 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestGenerationPrefix_WithMountedEngine.xml (6041 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 3200ee3b-0f67-4fa7-89e4-aad0549d7684 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderActionWithApplicationLayout_LayoutTest.xml (1051 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact bb813e8e-aeef-427e-af25-c5ba66bbcc5a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-DebugExceptionsTest.xml (6997 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 3959b6a4-eca1-473b-87f1-37a28fa30c35 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Routing_NonDispatchRoutedAppTest.xml (383 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 798e455e-b5e2-4262-b5df-4d32fbf28d56 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TestCallbacks2.xml (766 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 6f2ccb3d-5e73-4c4f-8e20-7a9ce6c57db2 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Routing_RoutesInspectorTest.xml (5090 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 63c3a0b8-9584-4e40-a981-8c8294441234 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-EngineControllerTests_BarControllerTestWithExplicitRouteSet.xml (382 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 3c31f7c1-71eb-4efa-978e-d405cf8ba2f9 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HttpBasicAuthenticationTest.xml (5669 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 74a32f82-a552-4aba-9217-c3d443a4afc7 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Journey_GTG_TestGeneralizedTable.xml (1183 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact 710f6081-026b-41b0-8519-22bee9b24f34 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TestCallbacksWithChangedConditions.xml (635 bytes)[0m
-[38;5;48m2021-11-20 00:34:47 INFO  [0m [0mUploading artifact ddfca278-679b-402b-983d-682c395e28c2 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-YieldingAroundFiltersTest.xml (1705 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact f6937932-09a0-4645-88eb-99c5d11518fa test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestCallableConstraintValidation.xml (362 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 071bc6e0-05d0-4fd5-aa94-8bb99bf92731 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-LogOnUnpermittedParamsTest.xml (881 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 394f3c61-6ba0-4ee5-8a73-825a9443a38c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestConstraintsAccessingParameters.xml (375 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 4a8cafe8-3e3f-4aa2-87d2-7a47a0b493dd test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Journey_Nodes_TestAst.xml (1397 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact bf76b562-ab3b-4d57-83d9-f1f5c3138190 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestResponseTest.xml (460 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 5b05e0f6-542d-4ce4-95c3-bcb693a283c9 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ShowExceptions_ShowExceptionsTest.xml (752 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 02a270a9-92df-4f8a-84b2-ef88801fd8ad test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestOptionalRootSegments.xml (341 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 11ec4a2e-92d7-4055-a758-4e6a4cf92b53 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ManuallySetNameTest.xml (372 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact cc316797-6d6d-4a7e-82b9-08d641d3cafd test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestPathParameters.xml (344 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact fa087544-cdcd-4946-ac84-cad232e29a6c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestIP.xml (1964 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact d80ba908-513c-462b-a17b-fdff323997cd test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-LocalizedTemplatesTest.xml (866 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact df59f637-e0b9-4a97-b143-df9d9c16f9cb test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestRedirectInterpolation.xml (708 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact f690796c-4d28-4a57-a34d-4f1fe3f5b5d1 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestForgeryProtectionControllerUsingCustomStrategyTest.xml (8526 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact afe715d0-ca24-4a8a-a119-e931cd8fffa0 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestForgeryProtectionControllerUsingExceptionTest.xml (8699 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 2557a762-01ed-4073-b726-4019b85f1855 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestIdResponseTest.xml (690 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact b656d665-621e-40e0-b1a6-be77d82bb199 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestDefaultScope.xml (324 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 18c6278e-cb50-4d8c-a969-f703ea34b65b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RaiseOnUnpermittedParamsTest.xml (558 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact a3cfaa04-a3d6-4caf-be8b-58b8a0d4b5f9 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-CollectionCacheTest.xml (942 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact f9489c45-98dd-4623-831b-b7f5098a0d29 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderersTest.xml (635 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 2655b3f3-6028-4054-a5ef-12761ba21d55 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SessionTest.xml (2285 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 47f531b7-d185-4b85-bd74-0633b1264e72 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderPartial_TestPartial.xml (664 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 157485ee-9a43-4aeb-971d-38a561f42c77 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ACLogSubscriberTest.xml (4487 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 1e72db75-0687-43d6-9fce-50879d098f4a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestGlobRoutingMapper.xml (597 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact ece2dcde-ddbb-48a0-bc57-efc7fa4dfdd0 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Journey_TestRouter.xml (5497 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 7a276c80-95aa-40a9-b8fd-fc20e2022ea7 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestPath.xml (808 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 6b623897-a373-4b5d-bdf2-d74f78b8566e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ScreenshotHelperTest.xml (2520 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact d755b294-e03f-4af4-a84c-48bf88897a20 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-PermissionsPolicyTest.xml (957 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 17a43270-d9d6-4fbd-b719-af41eb6e4475 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ParamsWrapperForApiTest.xml (351 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 0e00bae0-acdf-4840-a38f-1114f146b3ce test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestRoutingMapper.xml (28597 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact dbd629cf-4446-4915-aa41-e874533c9bc6 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestUriPathEscaping.xml (786 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 78c08189-ec06-49f4-83f3-4d25e0f64880 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HelpersTypoControllerTest.xml (346 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact a2e6736d-c99c-4198-9ed9-6039c9877c80 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Routing_HelperTest.xml (337 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 18778076-5005-4286-a2ab-8477fea71aa0 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-EmptyUrlOptionsTest.xml (566 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact d715cf5f-4125-4c5e-b94f-d1b9beba90c2 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-CookieJarTest.xml (1398 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact cac377a6-89a3-4773-a008-f3d9e55debcb test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestParameterFilter.xml (1163 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 0a6383bf-2ccb-4d45-91fc-b19ef434bc01 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MiddlewareTest_TestMiddleware.xml (944 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 8eb5bebe-aac4-4e7d-8011-95b031852e59 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-StaticEncodingTest.xml (4994 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 61ee14ce-0418-443b-94de-8cff1689bb94 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MultipartParamsParsingTest.xml (2656 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 2bb9f19e-26a4-4324-9f98-aa5451b9d082 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RedirectTest.xml (5908 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact df8127e4-7869-4500-9247-42612bf9f251 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Journey_TestRoutes.xml (949 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 29927083-72ac-4658-a4c2-249628fe91d3 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MetalIntegrationTest.xml (1271 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact c1fea5d8-0ec1-4000-b565-080e1d92879d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SetDriverToSeleniumHeadlessChromeTest.xml (385 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 1be7ae3d-bc2a-44e7-aab0-d8d3a1585ff2 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Session_AbstractSecureStoreTest.xml (546 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact ac2fada6-e31c-42c3-bd49-6a91ec75f31d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ControllerLayouts_MismatchFormatTest.xml (787 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact d1dcca9d-ddd4-41a3-8ba5-82231ec1cd68 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-DriverTest.xml (2790 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 97d5d28f-01c8-401c-a827-0934c244666c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_FlashHashTest.xml (3087 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 93efbbd4-7c7e-4133-835c-cba2eb6a51a8 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-DefaultContentSecurityPolicyIntegrationTest.xml (571 bytes)[0m
-[38;5;48m2021-11-20 00:34:48 INFO  [0m [0mUploading artifact 80a455a0-7982-48d8-919e-0dab14b72b19 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestNamedRouteUrlHelpers.xml (391 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact ed7bc4ed-fab7-47fe-805a-e81033cc51d1 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestDefaultUrlOptions.xml (349 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact ebcdb03a-5d7c-43c3-8453-4c9253ad526d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HeaderTest.xml (2710 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 61ac9a6c-da47-45bf-afec-9bd2855af599 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-NonceDirectiveContentSecurityPolicyIntegrationTest.xml (410 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact a9327884-4af6-45bf-bfc2-3876fbfd407b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestRouteDefaults.xml (501 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 48c238bf-4279-4c19-813d-2fd7b803b03a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-StarStarMimeControllerTest.xml (663 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 91f6c805-e376-48b6-a801-57325c44060d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ImplicitRenderTest.xml (790 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 88535b62-7c37-4742-9d6c-89c41d47ee8c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-Dispatching_BaseTest.xml (2041 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact cef1a71e-452b-4aef-b157-689b7b0897fd test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderBody_RenderBodyTest.xml (2332 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 80f150ec-3641-4977-b569-3bed6a799435 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MemCacheStoreTest.xml (1622 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 35237b11-cb75-4e90-a12b-3acfe7e0fbb9 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionController_TestSessionTest.xml (1975 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 33067f65-ecfa-4245-9caf-f4c683c8312e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_ExceptionWrapperTest.xml (2452 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 677dbfe9-bd87-447c-9a74-3ab763c514bc test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ExecutorTest.xml (1635 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact e0995ec9-30cc-49ae-bcae-2ab962fe4502 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-FragmentCacheKeyTest.xml (491 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact a6fe2a3d-1d10-4f6e-813c-a7b306fcdc46 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ManuallySetSymbolNameTest.xml (357 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact cc6a8cc8-2fbf-461c-9da8-3bba51dd3130 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MiddlewareStackTest.xml (4799 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 3f81a5ee-e458-4b45-8a0d-858ea74491fa test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TestCallbacksWithArgs.xml (413 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact a46f2f88-190c-43f3-bd48-772de102cd85 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-OutputEscapingTest.xml (690 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 7c5a4def-55af-4613-a468-c22be112f2ba test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MetalRenderTest.xml (335 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact a6c75a9d-fba5-4497-bef5-a865bf98f6eb test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-PermissionsPolicyIntegrationTest.xml (716 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact a3a90e84-558a-466b-9787-27b05b7a8fa7 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderToStringTest.xml (840 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 414b576a-e1d5-410e-b533-f82c9cba7173 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IntegrationWithRoutingTest.xml (354 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact c36f2ff6-0ec3-466e-9021-49e9130d698a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestIdTest.xml (1268 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact e7678f8c-68e7-408b-9692-6f2ccd3fd1bc test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestNamespaceWithControllerOption.xml (1388 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact e8704f37-0579-40a3-82c2-dd53cbaaec30 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderImplicitAction_RenderImplicitActionTest.xml (1348 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 71012252-8436-4127-8a62-4ece7a5ec565 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MetalControllerInstanceTests.xml (476 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact fa12c863-cb69-42ad-871b-037ac19cc73c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HeadWithStatusActionIntegrationTest.xml (404 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact b539c29e-4fb2-4814-a888-d635093fdb90 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Journey_GTG_TestBuilder.xml (1000 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 0fa63f29-7f03-43f8-b842-e009610dec70 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ContentType_ImpliedContentTypeTest.xml (960 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact b12c0f5a-ad0a-4b9c-b338-fd94b3b57538 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestCaseTest.xml (17426 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 468a9523-63ad-4c00-a4f8-2c60391fe125 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Routing_MapperTest.xml (2834 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 0f283239-79b4-455b-94b1-56104b1f67b3 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-LiveStreamRouterTest.xml (356 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 234f570e-471f-4d75-bf61-affad3fb01ea test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionControllerRenderTest.xml (355 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact a8a65ebd-ec00-4c30-affa-bb19e07bf542 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MimeControllerLayoutsTest.xml (717 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 2630ef6b-c85a-41ad-be19-a3e2517f92a0 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderTemplate_Compatibility_TestTemplateRenderWithForwardSlash.xml (451 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact b99ef074-2d27-4df9-a23f-92d4ce2733d4 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestPartialDynamicPathSegments.xml (377 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 38da182d-a966-4861-a7b4-9e071166cee2 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RackTestScreenshotsTest.xml (387 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact cd18c66b-5b4d-48e5-a04a-ccccf50c5eb1 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ParamsParseTest.xml (340 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 8c0d1f9d-083b-4fe0-a5f2-ca875863ba0e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ParametersDupTest.xml (1339 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 5e6e34f4-8f05-45ce-b433-b48e98f2e47d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestRelativeUrlRootGeneration.xml (464 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 61162c0c-85aa-4db2-b1d7-a8576963e266 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TestHalting.xml (409 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact d79a2e0f-6053-43a5-a8a1-df86aae8af86 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionControllerBaseRenderTest.xml (349 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact b33374eb-a74f-4fe0-972e-99069cbc1b63 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-UrlOptionsIntegrationTest.xml (1013 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 73a81ba8-4814-4daf-981a-792b214eeb3f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ConditionalGetApiTest.xml (807 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact bed261ac-dec6-477e-bf45-f214f78bf557 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SeleniumScreenshotsTest.xml (378 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 1258a33d-aacb-4658-b848-113fba6a5e1f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestGenerationPrefix_EngineMountedAtRoot.xml (2583 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact 1a385a38-14d4-44f7-85ad-bac855c52de2 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RoutingAssertionsTest.xml (4182 bytes)[0m
-[38;5;48m2021-11-20 00:34:49 INFO  [0m [0mUploading artifact d70a039c-21bd-469a-b97f-05f753fd945d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderJsonTest.xml (1460 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 1d9265de-9646-4f97-959e-72ea10298932 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HttpDigestAuthenticationTest.xml (5222 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 7066f0f0-bcf7-4f19-a9b8-9f6175abc017 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Session_AbstractStoreTest.xml (526 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 2df61d10-4f5d-4336-b723-27cedf11b8cd test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SetDriverToSeleniumHeadlessFirefoxTest.xml (387 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact e5722928-645d-436b-9057-0ae801ec5377 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ParameterEncodingTest.xml (949 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 14fff7de-f8af-445a-b840-ac6257972d49 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RackMountIntegrationTests.xml (834 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 5d4cc611-1211-47b6-b6a6-d7692c6af8d2 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionPack_URLForIntegrationTest.xml (11716 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 7b6f8958-4a6b-48a6-859d-80a7a9bc618f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IntegrationRequestsWithSessionSetup.xml (390 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 488c0221-5c39-40a1-97d6-32befe06c0eb test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ContentType_ExplicitContentTypeTest.xml (769 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact fc49b62c-087d-409d-bdd6-4a902e449a0c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-MultiParameterAttributesTest.xml (397 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact d2aaefab-9977-4fc4-abac-0849e393d849 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestParameters.xml (1979 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact c1d5427f-ada6-4950-8599-e94388fd23c6 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-UrlRewriterTests.xml (1300 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 80286f62-aff9-4ae1-954b-a58029570b00 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-NestedParametersPermitTest.xml (3031 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 5a46cad2-c636-4bfe-80cd-63db6fa9a2c1 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-Render_TestVariousObjectsAvailableInView.xml (712 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact b7b82512-84b4-4f5b-ab4c-e73d44c6379a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderPartial_TestInheritedPartial.xml (581 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact dad52eca-3285-491f-8396-436c881f87ce test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionControllerRequiredParamsTest.xml (879 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact daae5791-d1bd-4db8-b6c9-42fb115d563a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_UrlForTest.xml (7716 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 016fca12-967a-41a4-b23b-027c24cc7823 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-NamespacedParamsWrapperTest.xml (807 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 1eb9f47b-3095-48da-8c83-4906e82f4955 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-LoggingTest.xml (632 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact bb87b923-12ac-4a1d-9305-01149a29550f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-FlashIntegrationTest.xml (1203 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 217ede2c-50b5-464c-a8f3-54c34ef354bd test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-Render_TestViewInheritance.xml (999 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 1b980bac-5d1c-44c9-b3a5-7c5a3f24d2a9 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ContentNegotiation_TestContentNegotiation.xml (916 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 795cc7ee-0ee4-4d36-9488-6bad4587056c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RootLessJSONParamsParsingTest.xml (1109 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 90bdf21f-d0b2-4831-b7c0-795f36674307 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-EngineControllerTests_BarControllerTest.xml (362 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact a4419ec8-3d4b-4410-9a65-1e042d339af7 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Routing_RouteSetTest.xml (2324 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 314550be-a801-4fc1-96d7-64ed43ae803f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestMultipleNestedController.xml (402 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 8a3475e5-37b1-4b63-8eb7-cfbaa81cb307 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TestCallbacks1.xml (360 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 17738173-6dd2-465c-a43b-50bb46254c42 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ParametersAccessorsTest.xml (12426 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 12410b69-ab27-49e2-8e1f-ed4294439d13 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-LocalhostTest.xml (332 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact c357933e-ea28-4dad-a766-fa2832cf6d3f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SendFileTest.xml (3636 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact d7b47a5c-803e-4065-8bc3-4f5e289bde3e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestRequestTest.xml (1780 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 18562e9c-aae7-4193-9c11-ca10cd81162d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-EtagRenderTest.xml (844 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 81900e91-7681-4720-a13d-b75be2ec4f4e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TestCollector.xml (974 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact ebc863d4-842e-4a4a-b8fc-5d861cc40182 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderActionWithControllerLayout_ControllerLayoutTest.xml (921 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 62752230-1844-4e1c-83d8-f38a2f230c88 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_ContentDispositionTest.xml (986 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact f474163b-be7e-4f8b-adf0-8a620b7e38d4 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AlwaysPermittedParametersTest.xml (628 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 0a3e2dab-cd08-4e2f-b39f-dd13d161924b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SecureCookiesTest.xml (1761 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 5fccedb3-040c-4093-85d7-d5b41888ab13 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestRedirectRouteGeneration.xml (357 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 86a2596e-1955-4770-aca6-6e068f02126f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-StrictTransportSecurityTest.xml (1697 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 1331a3fc-595a-4b34-95df-94234378deb5 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RedirectSSLTest.xml (2251 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 499d3eab-90ed-4fc4-8d83-cce44cd6cc6e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ManuallySetStringNameTest.xml (357 bytes)[0m
-[38;5;48m2021-11-20 00:34:50 INFO  [0m [0mUploading artifact 406bc1a9-7d94-4705-99c5-7800c37aceba test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-WithHelpersTest.xml (333 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact bf278c87-72e1-439f-86d7-5708d55e5540 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-DisabledContentSecurityPolicyIntegrationTest.xml (589 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 2e8d6005-3502-49d9-bf76-0dc5cbf7c389 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ParametersPermitTest.xml (9464 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact aac57fd2-70d8-42ef-8557-1898b2744fa5 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RoutingDefaultsTest.xml (522 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact beddc3be-dd8a-41e8-850c-30c915612e63 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TestCallbacksWithArrayConditions.xml (836 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 2ebfaae4-9873-4042-9693-5be1808f6e8b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IntegrationTestTest.xml (662 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact bd8c57f7-0f5b-49a1-8eab-0e9246fb0f20 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ShowExceptions_ShowExceptionsOverriddenTest.xml (506 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 0c65659c-c4b3-4f46-876d-8ba46da5d792 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ServerTest.xml (690 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 68da464b-18f8-4082-bdc5-29a932122655 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderTemplate_TestWithoutLayout.xml (2266 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 0c5d1dfa-75f6-48d8-af29-835b55108b7c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Request_SessionIntegrationTest.xml (385 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 490a3070-1ea6-4780-a8d6-a4a5ca3784be test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TestCallbacks3.xml (509 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact c2bf8db1-0fbb-4d40-a43f-bd145db31c79 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ParamsWrapperTest.xml (3536 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact e63c1aea-eab5-4a55-9c4e-567d06f0f745 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IntegrationTestUsesCorrectClass.xml (358 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact f3e48e4c-b67d-4b41-8d5c-744abca075f7 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-LiveHeadRenderTest.xml (326 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact af7c35c1-6544-4af1-8d89-7df13db8ee5b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HeadRenderTest.xml (2243 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 8b0cfc8c-fee3-4be0-be63-d07027e0d21a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestRecognizePath.xml (652 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact e1e52060-7910-4abc-b26d-d92cbf2281da test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestHttpMethods.xml (4694 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 43ce075e-0add-4f06-9a55-976c4e0722c9 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ExpiresInRenderTest.xml (3387 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 9044127f-a9fb-4173-bfba-fef66e8e84c6 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AbstractController_Testing_TestCallbacksWithReusedConditions.xml (603 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 1400fd72-048e-4939-a4c2-568fb54c4700 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-OverrideDriverWithExplicitName.xml (375 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact d99027de-e994-4050-8f9a-8094804466ba test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderTemplate_TestWithLayout.xml (1021 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 0927ef13-c40c-469d-a710-0faebd4f88ef test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IntegrationFileUploadTest.xml (345 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 934fd717-22c8-4ddd-91ae-62b32131cac8 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-PerformActionTest.xml (611 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact f2f75e90-4a9c-4b74-8842-26d874500f27 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-InferringClassNameTest.xml (688 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 18c2fbf7-d975-4bd6-93fb-a71350da53f3 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestUrlGenerationErrors.xml (1075 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 84747414-3451-423a-9d04-1398d936af8d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Assertions_ResponseAssertionsTest.xml (1869 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact eed5d3e8-36ef-4f7b-8191-eb4b369d00ee test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RespondToControllerTest.xml (9663 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact d6de9131-55de-4830-91b2-31524cc86906 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-BareMetalTest_BareTest.xml (745 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 80124749-e9e1-409c-938b-a975007479a0 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_RunnerTest.xml (333 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 3a3d0599-f25b-470b-91a8-0d6c51cba12e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_Request_SessionTest.xml (1998 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 05b38d73-7455-462d-aac4-9b32b5e275ce test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ControllerFormBuilderTest.xml (356 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 6f167d0f-77e6-4097-8de2-68d5e081c37b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ParametersRequireTest.xml (1447 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 9088ad75-1757-4867-96d4-64fcb7ebce4e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionableExceptionsTest.xml (984 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact dc0bb7a2-7b71-469c-8116-92169434352a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestMethod.xml (1590 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 93af50d7-fae5-425b-939d-ffcd16e9391b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestPort.xml (801 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 17b037d2-e575-407e-8157-2f5976396128 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ViewCacheDependencyTest.xml (529 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact c67c2105-c379-45d1-bba8-d764bbeb18dd test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-Render_TestOnlyRenderPublicActions.xml (562 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 761d7cca-c810-4e32-894d-09fa1ad4c369 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-CacheHelperOutputBufferTest.xml (458 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 8cc7eab6-6290-4543-b42f-1dcfd9821194 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-UrlForApiTest.xml (321 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 653efec0-78bc-436f-8757-496eeac49c66 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-CustomAuthenticityParamControllerTest.xml (633 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact ddcdce20-20f2-466c-9100-0a64bebeb37f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IsolatedHelpersTest.xml (566 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 3e53a7f5-a1c1-44e7-9d71-a0a2ab39dd88 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestInternalRoutingParams.xml (370 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 37046ef0-eba8-4895-a809-b18fff6089fe test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ParametersMutatorsTest.xml (5696 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact b0acfc6b-9eb8-468d-bfb0-9aa02990e70e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestCookie.xml (332 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact edc0e72f-d5fa-4352-8bda-1eade97dc511 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RunnerTest.xml (355 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 51dd6d06-434a-4ec4-8391-783288ad0269 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestSession.xml (317 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 05cf2ba1-9b14-4fd6-bf55-70f39dfcbd86 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestParamsParsing.xml (532 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 24fc401f-bbf3-4a82-b294-7083bc5ed291 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestRewind.xml (489 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 8095ea4a-abcb-4cba-b1ef-4a8938ffa977 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-DispatcherTest.xml (337 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 0fe3e4cf-e70e-4b99-8558-3ca62eca10a3 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestVariant.xml (917 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact f5f65623-cf6c-4be4-9aba-26bad4866878 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SubclassWithHelpersTest.xml (341 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 82252c31-3947-4ebc-b7d2-8fe6f258a6df test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RouteSetTest.xml (11133 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 0cd93def-812e-43ce-a3fc-eb39af9ae190 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ControllerLayouts_FalseLayoutMethodTest.xml (397 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 66c70b72-df1c-4237-bbea-055e4dcb4778 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-EnvironmentFilterIntegrationTest.xml (363 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 738ba419-0b8b-456a-850a-85f63d6ec1b0 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-NamespacedEtagRenderTest.xml (349 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact a700144c-7013-4410-b030-5d88599e4c56 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-PerFormTokensControllerTest.xml (3523 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact de8523d7-8be4-49ed-9df8-d9abca871cb6 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestErrorsInController.xml (635 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact d7d6cf12-d304-4abc-a4e1-6d4f76d2fa48 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-FragmentCachingTest.xml (1881 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 8c3b6c40-e2ae-48d2-9891-3cd362c3647c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ReloaderTest.xml (1785 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 76214f8e-a4dd-41b3-8867-7ce12337b865 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-FreeCookieControllerTest.xml (881 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact a3211720-75d6-49da-b04a-233136ce5456 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestFormat.xml (2926 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact 07735e82-a2bb-47c5-95de-cfbc9a982e20 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestPortConstraints.xml (730 bytes)[0m
-[38;5;48m2021-11-20 00:34:51 INFO  [0m [0mUploading artifact ae236e6b-3a99-4c16-bdfa-83c27c25400e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderPlain_RenderPlainTest.xml (2583 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 19e4fc2e-7ced-4847-b400-9b50970554d5 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestOptionalScopesWithOrWithoutParams.xml (515 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact ba992264-a4a3-45f1-8b76-a6b8fed8afb1 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionController_Live_ResponseTest.xml (1949 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 6df9604a-ce76-4a1d-abb4-b75b7bf9c2ad test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ResponseHeadersTest.xml (807 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 5b815a59-cee9-494f-82ea-0d08b568e603 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestOptimizedNamedRoutes.xml (1724 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 95540243-ffc8-4ab4-836a-e87906cb48d1 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ShowExceptions_ShowExceptionsFormatsTest.xml (648 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 8f23bab9-2225-4aae-9b16-5d354d6ecf6d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderersMetalTest.xml (462 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact a82b5677-d2db-471b-9fd5-7a66a6eee9d3 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-CacheStoreTest.xml (1892 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 150f42e8-2085-44f1-9a07-5fab75b61aec test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-BareMetalTest_BareControllerTest.xml (351 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 2be16b88-bcea-422d-98f5-b478ce206128 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ExceptionInheritanceRescueControllerTest.xml (474 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 31657e16-1465-44ba-b269-4f763282b915 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestProtocol.xml (855 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 646c8f04-3241-4fbf-ad77-a581ba808a00 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderActionWithApplicationLayout_TestLayout.xml (383 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact b78d41fe-700d-45bf-b474-b4cda4d80269 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestEtag.xml (761 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact bfb08aae-c53b-44c7-b67c-d016ea68bc1d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-BareMetalTest_BareEmptyTest.xml (357 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 235614d0-e310-45be-960f-11976f7d199e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-DefaultUrlOptionsTest.xml (509 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact c79d1b17-28f4-44e4-a012-448239f6c041 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ControllerLayouts_LayoutOptionsTest.xml (413 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact f2f0729d-e14f-41f0-a062-a8723335b78b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IntegrationProcessTest.xml (4427 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact c79d596a-4046-4252-a4f4-59dc866ed29f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestForgeryProtectionControllerUsingNullSessionTest.xml (725 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 4d99fcde-cbd4-4912-920c-6c1006df4435 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ResponseDefaultHeadersTest.xml (503 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 91ba635c-6c8a-4a42-8b42-d03cb19365ab test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderActionWithBothLayouts_ControllerLayoutTest.xml (928 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact c519c977-62c4-4a51-bcea-ff75db89e2f7 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-BareMetalTest_HeadTest.xml (2686 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact c0e9d6a1-87f2-4f4a-8975-65dc51a2673e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ModuleTest_ModuleRedirectTest.xml (750 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact ee5fdd47-bbd5-407a-a301-be56abe43575 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-OverrideSeleniumSubclassToRackTestTest.xml (371 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 1496d917-1f43-4bc7-a1e1-66c3986aff70 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionController_BufferTest.xml (341 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 790f9f00-ea3e-4f63-b33e-5039e7142e0d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderStreaming_StreamingTest.xml (1760 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 0bf06d40-9bd8-47a0-a2c2-5e4679848dd6 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ResponseTest.xml (5475 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact c9bb9e3e-c7f9-4013-a3e0-d00e0df4b8b6 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SetDriverToSeleniumTest.xml (355 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 06da9bdf-103f-4c42-9268-3fbe39a8642d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionController_LiveStreamTest.xml (3137 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact a8baf652-fcde-47ef-94b6-1203029427fb test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HelperPathsTest.xml (333 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact f6a9a7a7-b470-41e4-a17f-0d963b90bada test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-IntegrationRequestEncodersTest.xml (1550 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 105d6d1f-67af-49ae-8561-421f6d1377d7 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionDispatch_UploadedFileTest.xml (2687 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 52549eeb-25bc-486f-a3b8-73c9a6c52b9e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AnonymousControllerTest.xml (337 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact cd673871-762e-47bb-9d30-fec5324d4011 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ControllerInheritanceRescueControllerTest.xml (656 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 23d5403c-05f5-4050-80cb-aa23349878c1 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ContentType_ExplicitCharsetTest.xml (608 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 3d36338e-4a3d-4c62-be02-d8624ed8b331 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ResourcesTest.xml (11236 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 53097f55-aaa9-4099-99b5-adae1133ed77 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionPackAssertionsControllerTest.xml (6098 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 86e8504c-7639-41f6-98ba-b7514f4fbcde test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestFormatConstraints.xml (750 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 6f0ef1cc-d3ba-42a7-b053-8796c966962b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-UriReservedCharactersRoutingTest.xml (708 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact bbd88fd7-e9f8-4905-807c-8dfbb3a1f474 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderXmlTest.xml (1306 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 71a59957-ef6f-4635-8aea-d3aa38d7b4a6 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-InheritedEtagRenderTest.xml (348 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact ecc807c7-297b-4fc9-a5a8-1da2d28ca86f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-WebServiceTest.xml (1141 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 3e2a96e9-7638-4aad-8902-b4c5e58ebe45 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ApplicationIntegrationTest.xml (1412 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact a06c07ac-b0fe-435f-92fd-ba03b7d1dc94 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ShowExceptionsTest.xml (1470 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact ff01675c-8f08-4ca5-bd00-10cfaf71af0e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-NamedRoutesControllerTest.xml (383 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 8e3cf87f-9edb-41d5-9696-9bf57e0c7fa3 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-WithCookiesTest.xml (333 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 6af99f95-148d-48a2-97d9-51b3e868866c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ContentTypeTest.xml (1694 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact cab07409-be6f-4946-9110-705e5c1be9c4 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderFile_TestBasic.xml (495 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact d82d24b5-4ad9-4f20-b166-b27921c77ada test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-PrependProtectForgeryBaseControllerTest.xml (746 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact d91586f1-d932-4027-9894-bfba03386f88 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestForgeryProtectionControllerUsingResetSessionTest.xml (8713 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 0cd3bcdd-65c2-4f60-9b16-3a7fedf8f202 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestMimeType.xml (1228 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 29c26a52-6cc5-40d3-9aea-ce82b44c40d0 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ShowExceptions_ShowFailsafeExceptionsTest.xml (372 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 6e56cc79-9010-4a78-94a7-51eb361a1d6e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ControllerInstanceTests.xml (836 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact 87db14f6-6a0c-4ca1-895b-26a84e46380f test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-StaticTest.xml (4986 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact ab6ff1a6-d194-4368-bda1-2d2d2e3f0cea test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-AnonymousControllerParamsWrapperTest.xml (521 bytes)[0m
-[38;5;48m2021-11-20 00:34:52 INFO  [0m [0mUploading artifact f4941061-5995-4517-b7ff-41a20b833370 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ContentSecurityPolicyTest.xml (2376 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact e0cd9786-a3a6-4dd9-a779-4703c632c81b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SkipProtectionControllerTest.xml (571 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact bb6c4e56-b2ff-40cb-bea2-b9222c102b08 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-FilterTest.xml (6254 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 2de93081-a49e-42fc-bfeb-f477c85ed7ad test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-FlashTest.xml (2486 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 7bab6da1-bad2-4565-b080-5746f9d11f1a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestCGI.xml (332 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 4d755cab-0f0d-4c8c-a817-c61a353e1c68 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-UrlEncodedParamsParsingTest.xml (1896 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact fe453542-454c-4e33-8c3f-92d8d6ed7b40 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestInspectTest.xml (320 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 5cf37f9e-434e-4a39-a256-bbfd5c9e98b4 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RackCacheMetaStoreTest.xml (339 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact a8397022-2c0b-42b7-bde7-0cd5380bb712 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RescueControllerTest.xml (2493 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact f4a873f9-4083-4acc-9cba-93a97b25af29 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestAltApp.xml (611 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 4dafa353-6315-47e5-bde7-ca8dfd29d135 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestUrlFor.xml (330 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 0dc21dd1-3fcd-4897-9e6c-ce8f0656b175 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-EarlyHintsRequestTest.xml (372 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 8a588fdb-94ed-4fd6-81fd-c08927a50322 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HostAuthorizationTest.xml (4632 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact eb386165-8f72-4033-98ef-b88574b3983a test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HttpCacheNoStoreTest.xml (1544 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 3b3e6427-5caa-4da0-bd6d-326ee045a5fc test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-UrlOptionsTest.xml (606 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 5127c88b-8447-400d-b937-8269cf88ff9b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ParametersSerializationTest.xml (858 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact acb7c69a-d11b-4c57-b974-5ec830fd300c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-CookieStoreTest.xml (3927 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 3bdfadda-d378-4304-9718-cf165f284f6d test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ControllerWithBeforeActionAndDefaultUrlOptionsTest.xml (417 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 28b8699a-81de-4896-84a9-d60a90a7488b test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RoutingConcernsTest.xml (2053 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact e14b2050-2e0c-4c89-ba9d-e35973d2254e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestCustomUrlHelpers.xml (1296 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact ef391ab3-1e15-4702-83af-32a0066fba9e test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-HelperTest.xml (2305 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 23e64b8f-20d3-4106-9889-274fe86166e8 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-SetDriverToRackTestTest.xml (356 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 180989eb-86e0-4542-b09a-d5e73dd2e68c test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-TestUrlGeneration_WithMountPoint.xml (5742 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 65a2e986-9ef4-4e1b-b45f-18e1d8b2a042 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ActionPackHeaderTest.xml (867 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 7a0559f1-4c63-4a2f-9287-055c04233e67 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-ResponseIntegrationTest.xml (1440 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact bcd89067-a4bd-409f-bd50-0a9ef174c9af test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderAction_RenderLayoutTest.xml (861 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact eea75ce5-568e-48e8-a419-bf1f6aca9816 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RenderersApiTest.xml (584 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 7ec7650b-a4cd-44eb-85c1-fc2262452d09 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestHost.xml (1987 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact dbd2e3fb-87ac-4b05-ba20-a05220a17cb6 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-RequestDomain.xml (435 bytes)[0m
-[38;5;48m2021-11-20 00:34:53 INFO  [0m [0mUploading artifact 738bd47b-2e7a-4f07-a55f-036d37640b74 test-reports/c7f0615d-2623-457d-aa6f-407996511bc0/TEST-DataStreamingApiTest.xml (332 bytes)[0m
-~~~ Running global pre-exit hook
-[90m$[0m /etc/buildkite-agent/hooks/pre-exit
-~~~ Running plugin docker-compose pre-exit hook
-[90m$[0m /var/lib/buildkite-agent/plugins/github-com-buildkite-plugins-docker-compose-buildkite-plugin-v3-7-0/hooks/pre-exit
-~~~ :docker: Cleaning up after docker-compose
-[90m$[0m docker-compose -f .buildkite/docker-compose.yml -p buildkitec7f0615d2623457daa6f407996511bc0 kill
-Killing buildkitec7f0615d2623457daa6f407996511bc0_memcached_1 ... 
-Killing buildkitec7f0615d2623457daa6f407996511bc0_redis_1     ... 
-[1A[2KKilling buildkitec7f0615d2623457daa6f407996511bc0_redis_1     ... [32mdone[0m[1B[2A[2KKilling buildkitec7f0615d2623457daa6f407996511bc0_memcached_1 ... [32mdone[0m[2B[90m$[0m docker-compose -f .buildkite/docker-compose.yml -p buildkitec7f0615d2623457daa6f407996511bc0 rm --force -v
-Going to remove buildkitec7f0615d2623457daa6f407996511bc0_memcached_1, buildkitec7f0615d2623457daa6f407996511bc0_redis_1
-Removing buildkitec7f0615d2623457daa6f407996511bc0_memcached_1 ... 
-Removing buildkitec7f0615d2623457daa6f407996511bc0_redis_1     ... 
-[2A[2KRemoving buildkitec7f0615d2623457daa6f407996511bc0_memcached_1 ... [32mdone[0m[2B[1A[2KRemoving buildkitec7f0615d2623457daa6f407996511bc0_redis_1     ... [32mdone[0m[1B[90m$[0m docker-compose -f .buildkite/docker-compose.yml -p buildkitec7f0615d2623457daa6f407996511bc0 down --volumes
-Removing network buildkitec7f0615d2623457daa6f407996511bc0_default
