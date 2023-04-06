@@ -1,2 +1,1 @@
-armando805ox36186
-# https://slack.api.stdlib.com/channels@0.7.3/files/create/
+# https://github.com/calbearox/potential-money/blog/main/src/site/_data/resources
