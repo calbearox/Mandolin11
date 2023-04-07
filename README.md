@@ -1,4 +1,4 @@
-# https://calbearox.github.io/potential-money/
+https://calbearox.github.io/potential-money/
 
 > GitHub API client for GitHub Actions
 
